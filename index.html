@@ -12,10 +12,12 @@
 <body>
 
 <div class="wrapper">
-  <div class="title-text">
-    <div class="title login">Login Form</div>
-    <div class="title signup">Signup Form</div>
+  <!-- Popflix heading -->
+  <div class="logo-container">
+    <h2>Popflix</h2>
+    <p>MOVIES. ANYTIME. EVERY MOOD.</p>
   </div>
+
   <div class="form-container">
     <div class="slide-controls">
       <input type="radio" name="slide" id="login" checked>
@@ -24,10 +26,20 @@
       <label for="signup" class="slide signup">Signup</label>
       <div class="slider-tab"></div>
     </div>
+
+
+<div class="welcome-text">
+  <h3>welcome back!</h3>
+  <p>Login to continue to your account</p>
+</div>
+
+    <!-- form -->
+     <div class="form-container">
     <div class="form-inner">
+      <!-- login form -->
       <form action="#" class="login">
         <div class="field">
-          <input type="text" placeholder="Email Address" required>
+          <input type="text" placeholder="Email or Username" required>
         </div>
         <div class="field">
           <input type="password" placeholder="Password" required>
@@ -37,11 +49,13 @@
           <div class="btn-layer"></div>
           <input type="submit" value="Login">
         </div>
-        <div class="signup-link">Not a member? <a href="">Signup now</a></div>
+        <div class="signup-link">Already have an account? <a href="">Signup</a></div>
       </form>
+
+      <!-- signup form -->
       <form action="#" class="signup">
         <div class="field">
-          <input type="text" placeholder="Email Address" required>
+          <input type="text" placeholder="Email or Username" required>
         </div>
         <div class="field">
           <input type="password" placeholder="Password" required>

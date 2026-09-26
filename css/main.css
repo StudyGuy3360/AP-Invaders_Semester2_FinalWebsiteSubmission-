@@ -10,67 +10,78 @@ html, body {
   height: 100%;
   width: 100%;
   place-items: center;
-  background: -webkit-linear-gradient(left, #003366, #004080, #0059b3, #0073e6);
+  background: #0f171e
 }
-::selection {
-  background: #1a75ff;
-  color: #fff;
-}
+
+/* card */
 .wrapper {
-  overflow: hidden;
-  max-width: 390px;
-  background: #fff;
+  max-width: 380px;
+  width: 100%;
+  background: #121212;
   padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  border: 2px solid #8a2be2;
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
 }
-.wrapper .title-text {
-  display: flex;
-  width: 200%;
-}
-.wrapper .title {
-  width: 50%;
-  font-size: 35px;
-  font-weight: 600;
+
+/* logo header */
+.wrapper .logo-container {
+  display: block;
+  width: 100%;
   text-align: center;
-  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  margin-bottom: 15px;
 }
+
+.wrapper .logo-container h2 {
+  color: #00d4ff;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+
+.logo-container p{
+    color: #aaaaaa;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+}
+
+/* slide-controls */
 .wrapper .slide-controls {
   position: relative;
   display: flex;
-  height: 50px;
+  height: 45px;
   width: 100%;
-  overflow: hidden;
-  margin: 30px 0 10px 0;
+  margin: 15px 0;
   justify-content: space-between;
-  border: 1px solid lightgrey;
-  border-radius: 15px;
+  border-bottom: 2px solid #333333;
 }
+
 .slide-controls .slide {
   height: 100%;
-  width: 100%;
-  color: #fff;
+  width: 50%;
+  color: #ffffff;
   font-size: 18px;
   font-weight: 500;
   text-align: center;
-  line-height: 48px;
+  line-height: 40px;
   cursor: pointer;
   z-index: 1;
-  transition: all 0.6s ease;
+  transition: all 0.3s ease;
 }
-.slide-controls label.signup {
-  color: #000;
-}
+
 .slide-controls .slider-tab {
   position: absolute;
-  height: 100%;
+  bottom: -2px;
+  height: 3px;
   width: 50%;
   left: 0;
-  z-index: 0;
+  z-index: 2;
   border-radius: 15px;
-  background: -webkit-linear-gradient(left, #003366, #004080, #0059b3, #0073e6);
-  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  background: linear-gradient(90deg, #8a2be2, #8a2be2);
+  transition: all 0.4s ease;
 }
+
+/* radio toggle */
 input[type="radio"] {
   display: none;
 }
@@ -78,111 +89,123 @@ input[type="radio"] {
   left: 50%;
 }
 #signup:checked ~ label.signup {
-  color: #fff;
-  cursor: default;
-  user-select: none;
+  color: #ffffff
 }
 #signup:checked ~ label.login {
-  color: #000;
+  color: #888888;
 }
 #login:checked ~ label.signup {
-  color: #000;
+  color: #888888;
 }
 #login:checked ~ label.login {
-  cursor: default;
-  user-select: none;
+  color: #ffffff;
 }
+
+#signup:checked ~ .form-container .form-inner {
+margin-left: -100%;
+}
+
+/* welcome text */
+.wrapper .welcome-text {
+  text-align: center;
+  margin: 15px 0;
+}
+.welcome-text h3 {
+  color: #ffffff;
+  font-size: 20px;
+}
+.welcome-text p {
+  color: #888888;
+  font-size: 13px;
+}
+
+/* form layout & inner slide container */
 .wrapper .form-container {
-  width: 100%;
-  overflow: hidden;
+    width: 100%;
+    overflow: hidden;
 }
+
 .form-container .form-inner {
-  display: flex;
-  width: 200%;
+    display: flex;
+    width: 200%;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
+
 .form-container .form-inner form {
   width: 50%;
-  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
+
+/* input field */
 .form-inner form .field {
-  height: 50px;
+  height: 48px;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 18px;
 }
 .form-inner form .field input {
   height: 100%;
   width: 100%;
   outline: none;
   padding-left: 15px;
-  border-radius: 15px;
-  border: 1px solid lightgrey;
-  border-bottom-width: 2px;
-  font-size: 17px;
+  border-radius: 8px;
+  background: #1a1a1a;
+  border: 1px solid #333333;
+  color: #ffffff;
+  font-size: 14px;
   transition: all 0.3s ease;
 }
 .form-inner form .field input:focus {
-  border-color: #1a75ff;
-  /* box-shadow: inset 0 0 3px #fb6aae; */
+  border-color: #8a2be2;
+  box-shadow: 0 0 8px rgba(138, 43, 226, 0.4);
 }
 .form-inner form .field input::placeholder {
-  color: #999;
-  transition: all 0.3s ease;
+  color: #666666
 }
-form .field input:focus::placeholder {
-  color: #1a75ff;
-}
+
+/* forgot password link */
 .form-inner form .pass-link {
-  margin-top: 5px;
+    text-align: right;
+  margin-top: 8px;
 }
-.form-inner form .signup-link {
-  text-align: center;
-  margin-top: 30px;
-}
-.form-inner form .pass-link a,
-.form-inner form .signup-link a {
-  color: #1a75ff;
+
+.form-inner form .pass-link a {
+  color: #aaaaaa;
+  font-size: 12px;
   text-decoration: none;
 }
-.form-inner form .pass-link a:hover,
-.form-inner form .signup-link a:hover {
+
+.form-inner form .pass-link a:hover {
   text-decoration: underline;
 }
-form .btn {
-  height: 50px;
-  width: 100%;
-  border-radius: 15px;
-  position: relative;
-  overflow: hidden;
-}
-form .btn .btn-layer {
-  height: 100%;
-  width: 300%;
-  position: absolute;
-  left: -100%;
-  background: -webkit-linear-gradient(
-    right,
-    #003366,
-    #004080,
-    #0059b3,
-    #0073e6
-  );
-  border-radius: 15px;
-  transition: all 0.4s ease;
-}
-form .btn:hover .btn-layer {
-  left: 0;
-}
+
+/* submit button  */
 form .btn input[type="submit"] {
   height: 100%;
   width: 100%;
-  z-index: 1;
-  position: relative;
-  background: none;
+  background: linear-gradient(90deg, #00c6ff, #9d4edd);
   border: none;
   color: #fff;
   padding-left: 0;
-  border-radius: 15px;
-  font-size: 20px;
-  font-weight: 500;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
+  transition: opacity 0.4s ease;
+  text-transform: uppercase;
+}
+
+form .btn input[type="submit"]:hover {
+    opacity: 0.9;
+}
+
+/* under login/signup */
+.form-inner form .signup-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #aaaaaa;
+    font-size: 13px;
+}
+
+.form-inner form .signup-link a {
+    color: #8a2be2;
+    text-decoration: underline;
 }
