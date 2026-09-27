@@ -99,7 +99,7 @@ border: none;
 padding: 10px 25px;
  font-weight: bold;
  cursor: pointer;
- 
+
 }
 
 
@@ -107,5 +107,56 @@ padding: 10px 25px;
 background: linear-gradient(to right, #8D54FF,#323131);
  color: #F8F8F8;
   cursor: pointer;
+}
+
+
+
+
+.list{ 
+font-weight: bold;
+ font-size: 20px;
+}
+
+
+
+.tabs {
+display: flex;
+justify-content: center;
+align-items: center;
+ gap: 10px;
+}
+
+.tabs button {
+ background: none;
+ border: none;
+  color: #F8F8F8;
+ font-size: 20px;
+padding: 10px 250px;
+ cursor: pointer;
+ margin-top: 0px;
+}
+
+
+
+#watchlistBtn {
+ border-bottom: 3px solid #53CAE4;
+
+}
+
+
+#watchlistBtn:hover{
+border-bottom: 3px solid #8D54FF;
+}
+
+
+
+#favouritesBtn {
+border-bottom: 3px solid #8D54FF;
+
+}
+
+
+#favouritesBtn:hover {
+border-bottom: 3px solid #53CAE4;
 }
 
