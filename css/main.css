@@ -466,3 +466,10 @@ main section .content .info .buttons {
     margin-inline: auto;
   }
 }
+
+
+
+/* navbar */
+.btn {
+  color: purple;
+}
