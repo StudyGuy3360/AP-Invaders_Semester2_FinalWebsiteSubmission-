@@ -1,3 +1,165 @@
+class{color: #141414;}
+
+body{
+    background: linear-gradient(
+       #141414,
+     #141414,
+      #53CAE4);
+
+color: #F8F8F8;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.headerSection {
+display: flex;
+justify-content: center;
+align-items: center;
+ gap: 100px;
+
+    }
+
+.logoImg {
+height: 150px;
+ width: 150px;
+object-fit: contain;
+ margin-left: 0px;
+margin-top: 0px;
+}
+
+.textCenter {
+margin-top: 0px;
+ margin-left: 400px;
+ font-size: 40;
+ font-weight: bold;
+}
+
+    
+.personIcon {
+margin-top: 0px;
+margin-left: 550px;
+ font-size: 40;
+ height: 50px;
+ width: 50px;
+   
+}
+
+
+
+.row {
+background-color: #141414 !important;
+border: 1px solid #141414 !important;
+ border-radius: 10px !important;
+ padding: 15px;
+ margin-top: 15px;
+margin-left: 1px;
+
+}
+
+
+.product-image {
+width: 380;
+ height: 562;
+object-fit: cover;
+ border-radius: 8px ;
+
+}
+
+
+.col-md-9 h5 {
+color: #F8F8F8;
+font-size: 25px;
+font-weight: bold;
+ margin-top: 110px;
+}
+
+
+
+.col-md-9 span {
+color:#F8F8F8;
+margin-left: 10px;
+ font-size: 15px;
+ margin-top: 10px;
+}
+
+
+.para {
+color:#F8F8F8;
+ font-size: 15px;
+ margin-left: 10px;
+
+}
+
+
+
+
+.btn-primary {
+ background: linear-gradient(to right,#8D54FF, #53CAE4);
+border: none;
+padding: 10px 25px;
+ font-weight: bold;
+ cursor: pointer;
+
+}
+
+
+.btn-primary:hover {
+background: linear-gradient(to right, #8D54FF,#323131);
+ color: #F8F8F8;
+  cursor: pointer;
+}
+
+
+
+
+.list{ 
+font-weight: bold;
+ font-size: 20px;
+}
+
+
+
+.tabs {
+display: flex;
+justify-content: center;
+align-items: center;
+ gap: 10px;
+}
+
+.tabs button {
+ background: none;
+ border: none;
+  color: #F8F8F8;
+ font-size: 20px;
+padding: 10px 250px;
+ cursor: pointer;
+ margin-top: 0px;
+}
+
+
+
+#watchlistBtn {
+ border-bottom: 3px solid #53CAE4;
+
+}
+
+
+#watchlistBtn:hover{
+border-bottom: 3px solid #8D54FF;
+}
+
+
+
+#favouritesBtn {
+border-bottom: 3px solid #8D54FF;
+
+}
+
+
+#favouritesBtn:hover {
+border-bottom: 3px solid #53CAE4;
+}
+
 body{
     background-color: black;
     color: white;
