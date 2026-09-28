@@ -1,4 +1,4 @@
-const loginText = document.querySelector("welcome-text h3");
+const loginText = document.querySelector(".form-container.login");
 const loginForm = document.querySelector("form.login");
 const loginBtn = document.querySelector("label.login");
 const signupBtn = document.querySelector("label.signup");
