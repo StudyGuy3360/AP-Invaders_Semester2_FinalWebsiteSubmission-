@@ -1,6 +1,6 @@
 class{color: #141414;}
 
-body{
+.watchlistBg{
     background: linear-gradient(
        #141414,
      #141414,
@@ -860,7 +860,7 @@ form .btn input[type="submit"]:hover {
 }
 
 
-body{
+.body2{
     background-color: #141414;
 }
 
@@ -883,7 +883,7 @@ body{
 }
 
 
-body{
+.body2{
     background-color: #141414;
 }
 
