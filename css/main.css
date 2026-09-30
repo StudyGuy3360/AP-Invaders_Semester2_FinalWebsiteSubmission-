@@ -1,6 +1,6 @@
 class{color: #141414;}
 
-body{
+.watchlistBg{
     background: linear-gradient(
        #141414,
      #141414,
@@ -161,7 +161,7 @@ border-bottom: 3px solid #53CAE4;
 }
 
 body{
-    background-color: black;
+    background-color:black;
     color: white;
 }
 
@@ -268,7 +268,7 @@ html {
 
 body {
   font-family: var(--main-font);
-  background: #000000;
+  background: black;
   min-height: 100vh;
 }
 
