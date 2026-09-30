@@ -1,7 +1,8 @@
 class{color: #141414;}
 
-body{
-    background: linear-gradient(
+
+    .watchlistBg{
+      background: linear-gradient(
        #141414,
      #141414,
       #53CAE4);
