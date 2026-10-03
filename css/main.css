@@ -1,21 +1,71 @@
-body{
-    background-color: #141414;
+#bodyContentLibrary{
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(to bottom, #141414, #53CAE4);
 }
 
-.toggleHeadings{
-    display: flex;
-    justify-content: center;
-    color: #f8f8f8;
+.navbar{
+    margin: 20px 40px;
+    background-color: #0f0f0f;
+    border-radius: 45px;
+    border-color: #8a2be2;
+    box-shadow: 0 0 8px rgba(138, 43, 226, 0.8);
 }
 
-.toggleLineLeft{
-  width: 200px;
-  height: 4px;
-  background-color: #8D54FF;
+.logo img{
+    max-height: 35px;
+    width: auto;
 }
 
-.toggleLineRight{
-  width: 200px;
-  height: 4px;
-  background-color: #53CAE4;
+.container-fluid{
+    padding: 0px 30px;
+}
+
+#active{
+    color: #53CAE4;
+}
+
+.nav-link{
+    color: #8a2be2;
+}
+
+.nav-link:hover {
+    color: #53CAE4;
+    transition: color 0.2s ease-in-out;
+}
+
+.fa-magnifying-glass{
+    color: #8a2be2;
+}
+
+.searchBox{
+    background-color: rgba(132, 38, 225, 0.3);
+    border-color: #8a2be2;
+    margin-top: -3px;
+    margin-bottom: -3px;
+    width: 270px;
+    color: #6d1db8;
+}
+
+.searchBox::placeholder{
+    color: #6d1db8;
+}
+
+.searchBox:focus{
+    background-color: rgba(38, 163, 231, 0.3);
+    border-color: #53CAE4;
+    margin-top: -3px;
+    margin-bottom: -3px;
+    width: 270px;
+    color: #2e92a9;
+    box-shadow: 0 0 8px rgba(83, 202, 228, 0.8);
+}
+
+.searchBox:focus::placeholder{
+    color: #2e92a9;
+}
+
+form:focus-within .fa-magnifying-glass {
+    color: #53CAE4;
+    transition: color 0.2s ease-in-out;
 }
