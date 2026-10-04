@@ -191,6 +191,12 @@ font-family: Arial, Helvetica, sans-serif;
 
 
 
+
+
+
+
+
+ /* Calvin */
 body{
     background-color: black;
     color: white;
@@ -213,72 +219,161 @@ h1 {
   size: 350px auto;
 }
 
+/* carousel */
 
-/* carosel */
-div#carousel { 
-  perspective: 1200px; 
-  background:black; 
-  padding-top: 10%; 
-  font-size:0; 
-  margin-bottom: 25%; 
-  
-}
-figure#spinner { 
-  transform-style: preserve-3d; 
-  height: 300px; 
-  transform-origin: 50% 50% -500px; 
-  transition: 1s; 
-} 
-figure#spinner img { 
-  width: 40%; max-width: 425px; 
-  position: absolute; left: 30%;
-  transform-origin: 50% 50% -500px;
-  outline:1px solid transparent; 
-}
-figure#spinner img:nth-child(1) { transform:rotateY(0deg); 
-}
-figure#spinner img:nth-child(2) { transform: rotateY(-45deg); }
-figure#spinner img:nth-child(3) { transform: rotateY(-90deg); }
-figure#spinner img:nth-child(4) { transform: rotateY(-135deg); }
-figure#spinner img:nth-child(5){ transform: rotateY(-180deg); }
-figure#spinner img:nth-child(6){ transform: rotateY(-225deg); }
-figure#spinner img:nth-child(7){ transform: rotateY(-270deg); }
-figure#spinner img:nth-child(8){ transform: rotateY(-315deg); }
-div#carousel ~ span { 
-  color: #fff; 
-  margin: 5%; 
-  display: inline-block; 
-  text-decoration: none; 
-  font-size: 2rem; 
-  transition: 0.6s color; 
-  position: relative; 
-  margin-top: -30rem; 
-  border-bottom:0; 
-  line-height: 0; }
-div#carousel ~ span:hover { color: #888; cursor: pointer; }
-/* done */
+$duration = 450ms
+$tileWidth = 250px
+$tileHeight = ($tileWidth / (16/9))
+$iconSize = 50px
+$growFactor = 1.5 // 1.5 times the original size
+
+$moveLeft = -($tileWidth * ($growFactor - 1) / 2)
+$moveRight = $tileWidth * ($growFactor - 1)
+
+body, html
+  padding: 0 10px
+  margin: 0
+  background: #0E0F11
+  color: #ecf0f1
+  font-family: 'Open Sans', sans-serif
+  min-height: 100vh
+  display: flex
+  flex-direction: row
+  align-items: center
+  width: 100%
+
+* { box-sizing: border-box }
+
+h1, p
+  text-align: center
+
+p
+  width: 100%
+  max-width: 500px
+  margin: auto
+
+a:link
+a:hover
+a:active
+a:visited
+  transition: color 150ms
+  color: #95a5a6
+  text-decoration: none
+
+a:hover
+  color: #7f8c8d
+  text-decoration: underline
+
+.contain
+  width: 100%
+
+.row
+  overflow: scroll
+  width: 100%
+
+.row__inner
+  transition: $duration transform
+  font-size: 0
+  white-space: nowrap
+  margin: ($tileHeight / 2) 0
+  padding-bottom: 10px // Account for OS X scroll bar
+
+.tile
+  position: relative
+  display: inline-block
+  width: $tileWidth
+  height: $tileHeight
+  margin-right: 10px
+  font-size: 20px
+  cursor: pointer
+  transition: $duration all
+  transform-origin: center left
+
+.tile__img
+  width: 120px;
+  height: :autofill
+  object-fit: cover
+
+.tile__details
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  top: 0
+  font-size: 10px
+  opacity: 0
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%)
+  transition: $duration opacity
+
+  &:after
+  &:before
+    content: ''
+    position absolute
+    top: 50%
+    left: 50%
+    display: black
+
+  &:after
+    margin-top: (-($iconSize / 2))
+    margin-left: (-($iconSize / 2))
+    width: $iconSize
+    height: $iconSize
+    border: 3px solid #ecf0f1
+    line-height: $iconSize
+    text-align: center
+    border-radius: 100%
+    background: rgba(0,0,0,0.5)
+    z-index: 1
+
+  &:before
+    content: '▶'
+    left: 0
+    width: 100%
+    font-size: 30px
+    margin-left: 7px
+    margin-top: -18px
+    text-align: center
+    z-index: 2
+
+  .tile:hover &
+    opacity: 1
+
+.tile__title
+  position absolute
+  bottom: 0
+  padding: 10px
+
+
+// *
+// * Hover effects
+// *
+
+// We assume when you hover .row, you're also hovering a .tile
+// First, move the whole row towards the left
+.row__inner:hover
+  transform: translate3d($moveLeft, 0, 0)
+
+.row__inner:hover .tile
+
+  // Fade out every tile
+  opacity: .3
+
+  // And then grow the current tile and make it opaque again
+  &:hover
+    transform: scale($growFactor)
+    opacity: 1
+
+// And finally move all tiles right of the current tile to the right,
+// so its flush against the hovered tile
+.tile:hover ~ .tile
+  transform: translate3d($moveRight, 0, 0)
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* film layout */
 *,
 *::before,
 *::after {
@@ -300,7 +395,7 @@ html {
 body {
   font-family: var(--main-font);
   background: #000000;
-  min-height: 100vh;
+  min-height: 60px;
 }
 
 body::-webkit-scrollbar {
@@ -383,18 +478,18 @@ main {
 
 main section {
   width: 100%;
-  min-height: 100vh;
-  height: 100%;
+  min-height: auto;
+  height: auto; 
   position: relative;
   text-transform: uppercase;
   box-shadow: 0px 0px 10px #00000024;
+  padding: 60px 0;
 }
-
 
 main section::after {
   content: "";
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -405,14 +500,15 @@ main section .content {
   z-index: 3;
   color: #fff;
   width: 100%;
-  height: 100vh;
+  height: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   column-gap: 60px;
   row-gap: 15px;
   flex-wrap: wrap;
   position: relative;
+  padding-left: 120px;
 }
 
 main section .content .image-prev {
@@ -481,8 +577,8 @@ main section .content .info .tips .year {
 
 main section .content .info .buttons {
   display: flex;
-  margin-top: 25px;
-  align-items: center;
+  margin-top: 0px;
+  align-items: left;
   gap: 20px;
   width: max-content;
 }
@@ -597,69 +693,6 @@ main section .content .info .buttons {
   animation: heartRing 0.9s both;
 
 
-/* heart ringing animation keyframes*/
-@keyframes heartRing {
-  0%,
-  100% {
-    transform-origin: top;
-  }
-
-  15% {
-    transform: rotateZ(10deg);
-  }
-
-  30% {
-    transform: rotateZ(-10deg);
-  }
-
-  45% {
-    transform: rotateZ(5deg);
-  }
-
-  60% {
-    transform: rotateZ(-5deg);
-  }
-
-  75% {
-    transform: rotateZ(2deg);
-  }
-}
-
-.save_btn:active {
-  transform: scale(0.8);
-}
-
-@media screen and (max-width: 1500px) {
-  main section:nth-child(1) {
-    background-size: cover;
-  }
-
-  main section:nth-child(2) {
-    background-size: cover;
-  }
-
-  main section:nth-child(3) {
-    background-size: cover;
-  }
-}
-@media screen and (max-width: 1015px) {
-  main section img {
-    transform: scale(0.8);
-  }
-  main section,
-  main section::after {
-    height: 130vh;
-  }
-  main section .content {
-    margin-top: 100px;
-    text-align: center;
-  }
-  main section .content .tips,
-  main section .content .info .buttons {
-    margin-inline: auto;
-  }
-}
-
 
 
 /* navbar */
@@ -667,7 +700,7 @@ main section .content .info .buttons {
   color: purple;
 }
 
-
+/* luca */
 
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 * {
@@ -891,7 +924,7 @@ form .btn input[type="submit"]:hover {
 }
 
 
-body{
+.body2{
     background-color: #141414;
 }
 
@@ -913,5 +946,26 @@ body{
   background-color: #53CAE4;
 }
 
+/* michelle */
+.body2{
+    background-color: #141414;
+}
 
+.toggleHeadings{
+    display: flex;
+    justify-content: center;
+    color: #f8f8f8;
+}
+
+.toggleLineLeft{
+  width: 200px;
+  height: 4px;
+  background-color: #8D54FF;
+}
+
+.toggleLineRight{
+  width: 200px;
+  height: 4px;
+  background-color: #53CAE4;
+}
 
