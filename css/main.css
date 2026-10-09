@@ -5,6 +5,8 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
+/* new code */
 html, body {
   display: grid;
   height: 100%;
