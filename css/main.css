@@ -431,6 +431,9 @@ a:hover
   padding: 0;
   box-sizing: border-box;
 }
+
+/* new code */
+html, body {
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
@@ -758,8 +761,11 @@ main section .content .info .buttons {
   height: 100%;
   width: 100%;
   place-items: center;
-  background: #0f171e
-  
+  background: url(/img/login_bg_img.png);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 /* card */
@@ -896,18 +902,34 @@ input[type="radio"] {
   height: 48px;
   width: 100%;
   margin-top: 18px;
+  position: relative;
 }
+
+/* icon styling and positioning */
+.form-inner form .field .input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaaaaa;
+  font-size: 15px;
+  pointer-events: none;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
 .form-inner form .field input {
   height: 100%;
   width: 100%;
   outline: none;
-  padding-left: 15px;
+  padding-left: 40px;
   border-radius: 8px;
   background: #1a1a1a;
   border: 1px solid #333333;
   color: #ffffff;
   font-size: 14px;
   transition: all 0.3s ease;
+  border: 2px solid #8a2be2;
 }
 
 /* email/username & password  */
@@ -923,6 +945,7 @@ input[type="radio"] {
 .form-inner form .pass-link {
     text-align: right;
   margin-top: 8px;
+  margin-bottom: 15px;
 }
 
 .form-inner form .pass-link a {
@@ -938,7 +961,8 @@ input[type="radio"] {
 /* submit button  */
 form .btn input[type="submit"] {
   height: 100%;
-  width: 100%;
+  width: 70%;
+  margin-left: 15%;
   background: linear-gradient(90deg, #00c6ff, #9d4edd);
   border: none;
   color: #fff;
