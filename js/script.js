@@ -9,6 +9,10 @@ class MediaItem {
     }
 }
 
+!async function(){
+  
+
+
 const url = 'https://imdb236.p.rapidapi.com/api/imdb/cast/nm0000190/titles';
 const options = {
 	method: 'GET',
@@ -17,7 +21,9 @@ const options = {
 		'x-rapidapi-host': 'imdb236.p.rapidapi.com',
 		'Content-Type': 'application/json'
 	}
-};
+}
+
+
 
 
 
@@ -45,7 +51,7 @@ console.log("Fetched data:", data);
 
     console.log(mediaItem);
 
-
+}();
 // api end
 
 
