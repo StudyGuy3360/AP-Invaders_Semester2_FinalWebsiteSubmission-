@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
  class MediaItem {
     constructor(_title, _type, _url, _image) {
@@ -53,7 +52,6 @@ document.querySelectorAll('.card-row').forEach(row => {
 let isDown = false;
  let startX;
 let scrollLeft;
-=======
 //Content Library JS
 const contLibMovies = [
     {image: "../assets/img/Movie_placeholder.png" },
@@ -71,7 +69,6 @@ const contLibMovies = [
     {image: "../assets/img/Movie_placeholder.png" },
     {image: "../assets/img/Movie_placeholder.png" },
 ];
->>>>>>> cc1a0df45282fbc3037157b753aef4d4dee3803e
 
 const container = document.getElementById('movieGridContainer');
 
