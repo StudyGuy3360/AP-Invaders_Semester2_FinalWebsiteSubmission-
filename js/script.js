@@ -8,26 +8,21 @@
     }
 }
 
-(async function() {
-  const url = 'https://imdb236.p.rapidapi.com/api/imdb/top250-movies';
-const options = {
-	method: 'GET',
-	headers: {
-		'x-rapidapi-key': 'e442447084mshaef834d90434e05p1bc45fjsn892d1a7e195a',
-		'x-rapidapi-host': 'imdb236.p.rapidapi.com',
-		'Content-Type': 'application/json'
-        }
-    };
+// (async function() {
+//   const url = 'https://imdb236.p.rapidapi.com/api/imdb/top250-movies';
+// const options = {
+// 	method: 'GET',
+// 	headers: {
+// 		'x-rapidapi-key': 'c006378485mshcb6da21b4a02bffp12b4e5jsn5289065eba1e',
+// 		'x-rapidapi-host': 'imdb236.p.rapidapi.com'
+//         }
+//     };
 
     let response = await fetch(url, options);
     let data = await response.json();
 
     console.log("Fetched data:", data);
 
-    if (!data || !Array.isArray(data) || data.length === 0) {
-        console.error("Data is empty or not an array");
-        return;
-    }
 
     let title = data[0].primaryTitle;
     let type = data[0].type;
