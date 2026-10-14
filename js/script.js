@@ -8,15 +8,15 @@
     }
 }
 
-// (async function() {
-//   const url = 'https://imdb236.p.rapidapi.com/api/imdb/top250-movies';
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'x-rapidapi-key': 'c006378485mshcb6da21b4a02bffp12b4e5jsn5289065eba1e',
-// 		'x-rapidapi-host': 'imdb236.p.rapidapi.com'
-//         }
-//     };
+(async function() {
+  const url = 'https://imdb236.p.rapidapi.com/api/imdb/top250-movies';
+const options = {
+	method: 'GET',
+	headers: {
+		'x-rapidapi-key': 'c006378485mshcb6da21b4a02bffp12b4e5jsn5289065eba1e',
+		'x-rapidapi-host': 'imdb236.p.rapidapi.com'
+        }
+    };
 
     let response = await fetch(url, options);
     let data = await response.json();
