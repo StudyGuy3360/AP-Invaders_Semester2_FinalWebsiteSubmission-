@@ -24,10 +24,6 @@ const options = {
 
     console.log("Fetched data:", data);
 
-    if (!data || !Array.isArray(data) || data.length === 0) {
-        console.error("Data is empty or not an array");
-        return;
-    }
 
     let title = data[0].primaryTitle;
     let type = data[0].type;
