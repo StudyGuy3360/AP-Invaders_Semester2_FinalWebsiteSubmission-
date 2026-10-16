@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 @import '/css/mainVariable.css';
 
 
-=======
 /* Content Library CSS */
->>>>>>> cc1a0df45282fbc3037157b753aef4d4dee3803e
 #bodyContentLibrary{
     height: 100%;
     width: 100%;
@@ -84,7 +81,7 @@ form:focus-within .fa-magnifying-glass {
 
 
 
-/*danielle*/
+/*Danielle*/
 
 .watchlistBody {
  background: linear-gradient(130deg, #141414 , #141414,  #53CAE4);
@@ -1055,3 +1052,176 @@ form .btn input[type="submit"]:hover {
   background-color: #53CAE4;
 }
 
+#bodyContentLibrary{
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, #141414, #53CAE4);
+}
+
+.navbar{
+    margin: 20px 40px;
+    background-color: #0f0f0f;
+    border-radius: 45px;
+    border-color: #8a2be2;
+    box-shadow: 0 0 8px rgba(138, 43, 226, 0.8);
+}
+
+.logo img{
+    max-height: 35px;
+    width: auto;
+}
+
+.container-fluid{
+    padding: 0px 30px;
+}
+
+#active{
+    color: #53CAE4;
+}
+
+.nav-link{
+    color: #8a2be2;
+}
+
+.nav-link:hover {
+    color: #53CAE4;
+    transition: color 0.2s ease-in-out;
+}
+
+.fa-magnifying-glass{
+    color: #8a2be2;
+}
+
+.searchBox{
+    background-color: rgba(132, 38, 225, 0.3);
+    border-color: #8a2be2;
+    margin-top: -3px;
+    margin-bottom: -3px;
+    width: 270px;
+    color: #6d1db8;
+}
+
+.searchBox::placeholder{
+    color: #6d1db8;
+}
+
+.searchBox:focus{
+    background-color: rgba(38, 163, 231, 0.3);
+    border-color: #53CAE4;
+    margin-top: -3px;
+    margin-bottom: -3px;
+    width: 270px;
+    color: #2e92a9;
+    box-shadow: 0 0 8px rgba(83, 202, 228, 0.8);
+}
+
+.searchBox:focus::placeholder{
+    color: #2e92a9;
+}
+
+form:focus-within .fa-magnifying-glass {
+    color: #53CAE4;
+    transition: color 0.2s ease-in-out;
+}
+
+.fa-bars{
+    color: #8a2be2;
+}
+
+.fa-bars:hover {
+    color: #53CAE4;
+}
+
+.contLibFilterButton{
+    background-color: #8a2be2;
+    color: #F8F8F8;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: bold;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.contLibFilterButton:hover,
+.contLibFilterButton.active{
+    background-color: #53CAE4;
+}
+
+.movieCarousel {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 10px 0;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.movieCarousel::-webkit-scrollbar {
+    display: none;
+}
+
+.movieCarouselItem {
+    flex: 0 0 calc((100% - 5 * 15px) / 6.3);
+    scroll-snap-align: start;
+}
+
+.movieCarouselItem img, .card-img-top {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    transition: box-shadow 0.3s ease;
+}
+
+.movieCarouselItem img:hover, .card-img-top:hover {
+    box-shadow: 0 0 8px rgba(138, 43, 226, 0.8);
+    cursor: pointer;
+    transform: scale(1.03);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+@media (max-width: 767px) {
+    .movieCarouselItem {
+        flex: 0 0 65%;
+    }
+}
+
+@media (max-width: 991px) {
+    .movieCarouselItem {
+        flex-basis: calc((100% - 3 * 15px) / 4.3);
+    }
+}
+
+@media (max-width: 575px) {
+    .movieCarouselItem {
+        flex-basis: calc((100% - 15px) / 2.3);
+    }
+}
+
+.genreTitle{
+    color: #F8F8F8;
+}
+
+.carouselArrow{
+    background-color: rgba(132, 38, 225, 0.3);
+    border-color: #8a2be2;
+    border: 1px solid #8a2be2;
+    color: #8a2be2;
+    border-radius: 8px;
+    width: 41px;
+    height: 41px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    margin-left: 5px;
+    
+}
+
+.carouselArrow:hover {
+    background-color: #53CAE4;
+    color: white;
+    border-color: #53CAE4;
+}
