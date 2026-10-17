@@ -280,7 +280,7 @@ $growFactor = 1.5 // 1.5 times the original size
 $moveLeft = -($tileWidth * ($growFactor - 1) / 2)
 $moveRight = $tileWidth * ($growFactor - 1)
 
-body, html
+body, html {
   padding: 0 10px
   margin: 0
   background: #0E0F11
@@ -291,7 +291,7 @@ body, html
   flex-direction: row
   align-items: center
   width: 100%
-
+}
 * { box-sizing: border-box }
 
 h1, p
@@ -435,7 +435,7 @@ a:hover
 /* new code */
 html, body {
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
+}
 :root {
   --main-font: "Montserrat", sans-serif;
   --main-color: #b61dfd;
@@ -755,28 +755,39 @@ main section .content .info .buttons {
 
 /* luca */
 
+/* responsive screen */
+@media (max-width: 700px) {
+  .wrapper {
+    padding: 15px 20px;
+  }
+  .wrapper .logo-container {
+    margin-bottom: 5px;
+  }
+  .wrapper .slide-controls {
+    margin: 10px 0;
+  }
+}
 
 .body1 {
+  padding-top: 20px;
   display: grid;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   place-items: center;
   background: url(/img/login_bg_img.png);
-  background-repeat: no-repeat;
-  background-size:cover;
-  background-position: center;
-  background-attachment: fixed;
+  place-items: center;
 }
 
 /* card */
 .wrapper {
   max-width: 380px;
-  width: 100%;
+  width: 90%;
   background: #121212;
   padding: 30px;
   border-radius: 16px;
   border: 2px solid #8a2be2;
   box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+  box-sizing: border-box;
 }
 
 /* logo header */
@@ -930,6 +941,7 @@ input[type="radio"] {
   font-size: 14px;
   transition: all 0.3s ease;
   border: 2px solid #8a2be2;
+  box-sizing: border-box;
 }
 
 /* email/username & password  */
