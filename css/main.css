@@ -87,7 +87,6 @@ form:focus-within .fa-magnifying-glass {
  background-image: url("../assest/img/backgroundMovie.jpeg");
     background-size: cover;
     background-position: center;
-   background-size: 99%;
     background-attachment: fixed;
 /*background: linear-gradient(130deg, #141414 , #141414,  #53CAE4);*/
 color: #ffffff;
