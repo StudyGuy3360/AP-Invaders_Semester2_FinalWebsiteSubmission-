@@ -155,7 +155,7 @@ transform: translateY(-8px);
 }
 
 .movie-card:hover .movie-poster {
-box-shadow: 0 20px 40px -15px #1f98b0;
+box-shadow: 0 20px 40px -5px #20c3e4;
 }
 
 
