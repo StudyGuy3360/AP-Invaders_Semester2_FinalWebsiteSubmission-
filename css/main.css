@@ -143,8 +143,8 @@ flex: 0 0 200px;
  border: none;
 position: relative;
 cursor: pointer;
- box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.8);
- transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+ 
+transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 
@@ -253,11 +253,15 @@ border-bottom: 3px solid #53CAE4;
   padding: 40px;
   min-height: 100vh;
   
-}
+}*/
 
 
 .favouritesBody {
-     background: linear-gradient(130deg, #141414 , #141414,  #8D54FF);
+background-image: url("../assest/img/backgroundMovie.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  /*background: linear-gradient(130deg, #141414 , #141414,  #8D54FF);*/
   color: #ffffff;
   font-family:Arial, Helvetica, sans-serif;
   margin: 0;
@@ -265,11 +269,11 @@ border-bottom: 3px solid #53CAE4;
   min-height: 100vh;
   
 .movie-card:hover .movie-poster {
-  box-shadow: 0 20px 40px -15px #8D54FF;
+  box-shadow: 0 20px 40px -5px #8d58ff;
 }
 }
 
-*/
+
 
 
 

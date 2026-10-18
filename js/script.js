@@ -92,7 +92,7 @@ document.body.className = "watchlistBody";
 favouritesBtn.addEventListener("click", function() {
   watchlistPage.style.display = "none";
 favouritesPage.style.display = "block";
-pageTitle.textContent = "My Favourites";
+pageTitle.textContent = "Replays";
 document.body.className = "favouritesBody";
 });
 
