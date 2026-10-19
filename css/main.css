@@ -11,7 +11,6 @@
 .navbar{
     margin: 20px 40px;
     background-color: var(--backgroundColor)
-     /* #0f0f0f; */
     border-radius: 45px;
     border-color: #8a2be2;
     box-shadow: 0 0 8px rgba(138, 43, 226, 0.8);
@@ -1178,9 +1177,9 @@ form:focus-within .fa-magnifying-glass {
 }
 
 .movieCarouselItem img:hover, .card-img-top:hover {
-    box-shadow: 0 0 8px rgba(138, 43, 226, 0.8);
+    box-shadow: 0 20px 40px -15px rgba(138, 43, 226, 0.8);
     cursor: pointer;
-    transform: scale(1.03);
+    transform: translateY(-8px);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
