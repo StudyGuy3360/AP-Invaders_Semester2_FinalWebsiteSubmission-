@@ -1,5 +1,60 @@
+class Movie{
+  constructor(_title, _rating, _link, _image){
+    this.title = _title;
+    this.rating = _rating;
+    this.link = _link;
+    this.image = _image;
+  }
+}
 
- class MediaItem {
+!async function(){
+
+const options = {
+  method: 'GET',
+  headers: {accept: 'application/json',  Authorization: 'Bearer  eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNDM2YjBmZDlhNjJiZTI2MDUxMTI2MDA2NmM0ZWIzYiIsIm5iZiI6MTc5MjEzODE4NC4xNTUsInN1YiI6IjZhZDFkYmM4ZGI0YmYxMmI2MmIzZTc5ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mLj37yAOQSPUr6bmuhkc_T1XO0z1fGPEkcOrl6fizTc'}
+};
+
+ let data = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
+            .then(res => res.json())
+            .then(result => {return result})
+            .catch(err => console.error(err));
+
+  for (let page = 2; page <= 5; page++) {
+    let moreData = await fetch(
+        `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,
+        options
+    ).then(res => res.json());
+
+    data.results.push(...moreData.results);
+  }
+
+  console.log(data);
+
+  console.log(data.results[0].title);
+
+  apiMovies = data.results;
+
+  console.log("Total movies:", apiMovies.length);
+
+  renderAllMovies(apiMovies);
+
+}();
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ /*class MediaItem {
     constructor(_title, _type, _url, _image) {
         this.title = _title;
         this.type = _type;
@@ -40,7 +95,7 @@ const options = {
 // api end
 
 
-
+*/
 
 //WatchlistJS
 document.querySelectorAll('.card-row').forEach(row => {
