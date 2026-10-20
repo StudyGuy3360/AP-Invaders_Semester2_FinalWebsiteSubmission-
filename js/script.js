@@ -38,8 +38,46 @@ const options = {
 
   renderAllMovies(apiMovies);
 
+  //Search on ContLib
+    const searchForm = document.getElementById("movieSearchForm");
+    const searchInput = document.getElementById("movieSearchInput");
+
+    searchForm.addEventListener("submit", async function(event) {
+        event.preventDefault();
+
+        const searchTerm = searchInput.value.trim();
+
+        if (searchTerm === "") return;
+
+        const searchUrl = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(searchTerm)}&language=en-US&page=1`;
+
+        try {
+            const response = await fetch(searchUrl, options);
+
+            if (!response.ok) {
+                throw new Error("Movie search failed");
+            }
+
+            const data = await response.json();
+            const searchResults = data.results.filter(movie => movie.poster_path);
+
+            document.querySelectorAll(".contLibFilterButton").forEach(button => {
+                button.classList.remove("active");
+            });
+
+            document.querySelector(
+                '.contLibFilterButton[data-target="allMoviesSection"]'
+            ).classList.add("active");
+
+            renderAllMovies(searchResults);
+
+        } catch (error) {
+            console.error("Error searching movies:", error);
+        }
+    });
 }();
 
+// Old API start
 // class MediaItem {
 //     constructor(_title, _type, _url, _image) {
 //         this.title = _title;
@@ -83,7 +121,7 @@ const options = {
 
 //     console.log(mediaItem);
 // })();
-// // api end
+// // Old api end
 
 
 
@@ -99,23 +137,6 @@ const options = {
 
 //Content Library JS
 let apiMovies = [];
-
-const contLibMovies = [
-    {image: "../assets/img/Movie_placeholder.png" },
-    {image: "../assets/img/Movie_placeholder.png" },
-    {image: "../assets/img/Movie_placeholder.png" },
-    {image: "../assets/img/Movie_placeholder.png" },
-    {image: "../assets/img/Movie_placeholder.png" },
-    {image: "../assets/img/Movie_placeholder.png" },
-    {image: "../assets/img/Movie_placeholder.png" },
-    {image: "../assets/img/Movie_placeholder.png" },
-    {image: "../assets/img/Movie_placeholder.png" },
-    {image: "../assets/img/Movie_placeholder.png" },
-    {image: "../assets/img/Movie_placeholder.png" },
-    {image: "../assets/img/Movie_placeholder.png" },
-    {image: "../assets/img/Movie_placeholder.png" },
-    {image: "../assets/img/Movie_placeholder.png" },
-];
 
 const container = document.getElementById('movieGridContainer');
 
