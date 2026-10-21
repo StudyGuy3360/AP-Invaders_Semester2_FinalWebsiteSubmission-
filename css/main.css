@@ -10,7 +10,7 @@
 
 .navbar{
     margin: 20px 40px;
-    background-color: var(--backgroundColor)
+    background-color: var(--backgroundColor);
     border-radius: 45px;
     border-color: #8a2be2;
     box-shadow: 0 0 8px rgba(138, 43, 226, 0.8);
