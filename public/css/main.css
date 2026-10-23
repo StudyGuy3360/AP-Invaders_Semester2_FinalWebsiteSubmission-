@@ -10,8 +10,7 @@
 
 .navbar{
     margin: 20px 40px;
-    background-color: var(--backgroundColor)
-     /* #0f0f0f; */
+    background-color: var(--backgroundColor);
     border-radius: 45px;
     border-color: #8a2be2;
     box-shadow: 0 0 8px rgba(138, 43, 226, 0.8);
@@ -283,8 +282,8 @@ h1 {
   size: 350px auto;
 }
 
-/* carousel */
 
+<<<<<<< HEAD
 $duration = 450ms
 $tileWidth = 250px
 $tileHeight = ($tileWidth / (16/9))
@@ -431,6 +430,8 @@ a:hover
 // so its flush against the hovered tile
 .tile:hover ~ .tile
   transform: translate3d($moveRight, 0, 0)
+=======
+>>>>>>> 0e5d382b8ce1bc1c6501c01cd17de9ed0d6dc773
 
 
 
@@ -1509,9 +1510,9 @@ form:focus-within .fa-magnifying-glass {
 }
 
 .movieCarouselItem img:hover, .card-img-top:hover {
-    box-shadow: 0 0 8px rgba(138, 43, 226, 0.8);
+    box-shadow: 0 20px 40px -15px rgba(138, 43, 226, 0.8);
     cursor: pointer;
-    transform: scale(1.03);
+    transform: translateY(-8px);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
