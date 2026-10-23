@@ -23,15 +23,15 @@ const options = {
 
   console.log(data.results[0].title);
 
-  let title = data[0].title;
-  let rating = data[0].rating;
-  let link = data[0].imdb_link;
-  let image = data[0].image;
+  let title = data.results[0].title;
+  let rating = data.results[0].rating;
+  let link = data.results[0].imdb_link;
+  let image = data.results[0].poster_path;
 
   let newMovie = new Movie(title, rating, link, image);
 
   document.getElementById('title').innerHTML = newMovie.title;
-  document.getElementById('content').innerHTML = newMovie.rating + "<br>" + newMovie.link + "<br>" + "<img src='" + newMovie.image + "'>";
+  document.getElementById('content').innerHTML = newMovie.rating + "<br>" + newMovie.link + "<br>" + "<img src='" + "https://image.tmdb.org" + newMovie.image + "'>";
 
   console.log(newMovie);
 
