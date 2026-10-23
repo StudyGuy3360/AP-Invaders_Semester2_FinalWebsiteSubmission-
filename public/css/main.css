@@ -293,8 +293,7 @@ h1 {
 
 /* new code */
 html, body {
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap")};
 
 :root {
   --main-font: "Montserrat", sans-serif;
@@ -621,11 +620,12 @@ main section .content .info .buttons {
   height: 100%;
   width: 100%;
   place-items: center;
-  background: url(../assets/img/login_bg_img.png);
+  background: url(/public/assets/img/login_bg_img.png);
   background-repeat: no-repeat;
   background-size:cover;
   background-position: center;
   background-attachment: fixed;
+  padding-top: 100px;
 }
 
 /* card */
@@ -859,7 +859,7 @@ form .btn input[type="submit"]:hover {
 body {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
-  background: url(/img/login_bg_img.png);  
+  background: url(/public/assets/img/login_bg_img.png);  
   color: #fff;
 }
 
