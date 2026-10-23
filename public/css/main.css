@@ -10,8 +10,7 @@
 
 .navbar{
     margin: 20px 40px;
-    background-color: var(--backgroundColor)
-     /* #0f0f0f; */
+    background-color: var(--backgroundColor);
     border-radius: 45px;
     border-color: #8a2be2;
     box-shadow: 0 0 8px rgba(138, 43, 226, 0.8);
@@ -92,7 +91,7 @@ form:focus-within .fa-magnifying-glass {
 /*background: linear-gradient(130deg, #141414 , #141414,  #53CAE4);*/
 color: #ffffff;
 font-family:Arial, Helvetica, sans-serif;
-margin: 0;
+margin: 0px;
 padding: 40px;
  min-height: 100vh;
 }
@@ -307,160 +306,6 @@ h1 {
   size: 350px auto;
 }
 
-/* carousel */
-
-$duration = 450ms
-$tileWidth = 250px
-$tileHeight = ($tileWidth / (16/9))
-$iconSize = 50px
-$growFactor = 1.5 // 1.5 times the original size
-
-$moveLeft = -($tileWidth * ($growFactor - 1) / 2)
-$moveRight = $tileWidth * ($growFactor - 1)
-
-body, html
-  padding: 0 10px
-  margin: 0
-  background: #0E0F11
-  color: #ecf0f1
-  font-family: 'Open Sans', sans-serif
-  min-height: 100vh
-  display: flex
-  flex-direction: row
-  align-items: center
-  width: 100%
-
-* { box-sizing: border-box }
-
-h1, p
-  text-align: center
-
-p
-  width: 100%
-  max-width: 500px
-  margin: auto
-
-a:link
-a:hover
-a:active
-a:visited
-  transition: color 150ms
-  color: #95a5a6
-  text-decoration: none
-
-a:hover
-  color: #7f8c8d
-  text-decoration: underline
-
-.contain
-  width: 100%
-
-.row
-  overflow: scroll
-  width: 100%
-
-.row__inner
-  transition: $duration transform
-  font-size: 0
-  white-space: nowrap
-  margin: ($tileHeight / 2) 0
-  padding-bottom: 10px // Account for OS X scroll bar
-
-.tile
-  position: relative
-  display: inline-block
-  width: $tileWidth
-  height: $tileHeight
-  margin-right: 10px
-  font-size: 20px
-  cursor: pointer
-  transition: $duration all
-  transform-origin: center left
-
-.tile__img
-  width: 120px;
-  height: :autofill
-  object-fit: cover
-
-.tile__details
-  position: absolute
-  bottom: 0
-  left: 0
-  right: 0
-  top: 0
-  font-size: 10px
-  opacity: 0
-  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%)
-  transition: $duration opacity
-
-  &:after
-  &:before
-    content: ''
-    position absolute
-    top: 50%
-    left: 50%
-    display: black
-
-  &:after
-    margin-top: (-($iconSize / 2))
-    margin-left: (-($iconSize / 2))
-    width: $iconSize
-    height: $iconSize
-    border: 3px solid #ecf0f1
-    line-height: $iconSize
-    text-align: center
-    border-radius: 100%
-    background: rgba(0,0,0,0.5)
-    z-index: 1
-
-  &:before
-    content: '▶'
-    left: 0
-    width: 100%
-    font-size: 30px
-    margin-left: 7px
-    margin-top: -18px
-    text-align: center
-    z-index: 2
-
-  .tile:hover &
-    opacity: 1
-
-.tile__title
-  position absolute
-  bottom: 0
-  padding: 10px
-
-
-// *
-// * Hover effects
-// *
-
-// We assume when you hover .row, you're also hovering a .tile
-// First, move the whole row towards the left
-.row__inner:hover
-  transform: translate3d($moveLeft, 0, 0)
-
-.row__inner:hover .tile
-
-  // Fade out every tile
-  opacity: .3
-
-  // And then grow the current tile and make it opaque again
-  &:hover
-    transform: scale($growFactor)
-    opacity: 1
-
-// And finally move all tiles right of the current tile to the right,
-// so its flush against the hovered tile
-.tile:hover ~ .tile
-  transform: translate3d($moveRight, 0, 0)
-
-
-
-
-
-
 /* film layout */
 *,
 *::before,
@@ -472,7 +317,7 @@ a:hover
 
 /* new code */
 html, body {
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap")};
 
 :root {
   --main-font: "Montserrat", sans-serif;
@@ -799,11 +644,12 @@ main section .content .info .buttons {
   height: 100%;
   width: 100%;
   place-items: center;
-  background: url(/img/login_bg_img.png);
+  background: url(/public/assets/img/login_bg_img.png);
   background-repeat: no-repeat;
   background-size:cover;
   background-position: center;
   background-attachment: fixed;
+  padding-top: 100px;
 }
 
 /* card */
@@ -1031,50 +877,326 @@ form .btn input[type="submit"]:hover {
 }
 
 
-.body2{
-    background-color: #141414;
+/* LUCA HOME PAGE CSS */
+
+/* NAVBAR */
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  background: url(/public/assets/img/login_bg_img.png);  
+  color: #fff;
 }
 
-.toggleHeadings{
-    display: flex;
-    justify-content: center;
-    color: #f8f8f8;
+img {
+  max-width: 100%;
+  border: 0;
 }
 
-.toggleLineLeft{
-  width: 200px;
+a {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  transition: all 0.4s ease-in-out;
+}
+
+a:hover {
+  color: #53CAE4;
+}
+
+.navbar {
+  margin: 20px 40px;
+  background-color: #0f0f0f;
+  border-radius: 45px;
+  border: 1px solid #8a2be2;
+  box-shadow: 0 0 8px rgba(138, 43, 226, 0.8);
+}
+
+.logo img {
+  max-height: 35px;
+  width: auto;
+}
+
+
+.container-fluid {
+  padding: 0 30px;
+}
+
+#active {
+  color: #53CAE4;
+}
+
+.nav-link {
+  color: #8a2be2;
+}
+
+.nav-link:hover {
+  color: #53CAE4;
+  transition: color 0.2s ease-in-out;
+}
+
+.fa-magnifying-glass {
+  color: #8a2be2;
+}
+
+.searchBox {
+  background-color: rgba(132, 38, 225, 0.3);
+  border-color: #8a2be2;
+  margin-top: -3px;
+  margin-bottom: -3px;
+  width: 270px;
+  color: #6d1db8;
+}
+
+.searchBox::placeholder {
+  color: #6d1db8;
+}
+
+.searchBox:focus {
+  background-color: rgba(38, 163, 231, 0.3);
+  border-color: #53CAE4;
+  color: #2e92a9;
+  box-shadow: 0 0 8px rgba(83, 202, 228, 0.8);
+}
+
+.searchBox:focus::placeholder {
+  color: #2e92a9;
+}
+
+form:focus-within .fa-magnifying-glass {
+  color: #53CAE4;
+  transition: color 0.2s ease-in-out;
+}
+
+.fa-bars {
+  color: #8a2be2;
+}
+
+.fa-bars:hover {
+  color: #53CAE4;
+}
+
+/* TITLES */
+
+h2 {
+  margin-bottom: 48px;
+  padding-bottom: 16px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  position: relative;
+  text-transform: capitalize;
+  color: #00aad1;
+}
+
+h3 {
+  margin: 0 0 10px;
+  font-size: 28px;
+  line-height: 36px;
+}
+
+/* Title underline */
+.line-title {
+  position: relative;
+  width: 400px;
+}
+
+.line-title::before,
+.line-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
   height: 4px;
-  background-color: #8D54FF;
+  border-radius: 2px;
 }
 
-.toggleLineRight{
-  width: 200px;
-  height: 4px;
-  background-color: #53CAE4;
+.line-title::before {
+  width: 100%;
+  background: #f2f2f2;
 }
+
+.line-title::after {
+  width: 32px;
+  background: #dc00c2;
+}
+
+/* GAME SECTION */
+
+.game-section {
+  padding: 60px 50px;
+}
+
+.game-section .owl-stage {
+  margin: 15px 0;
+  display: flex;
+}
+
+.game-section .item {
+  margin: 0 15px 60px;
+  width: 320px;
+  height: 400px;
+  display: flex;
+  align-items: flex-end;
+  background: #343434 no-repeat center center / cover;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+.game-section .item.active {
+  width: 500px;
+  box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);
+}
+
+.game-section .item::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+}
+
+.game-section .item-desc {
+  padding: 0 24px 12px;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transform: translateY(calc(100% - 54px));
+  transition: all 0.4s ease-in-out;
+}
+
+.game-section .item.active .item-desc {
+  transform: none;
+}
+
+.game-section .item-desc p {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: all 0.4s ease-in-out 0.2s;
+}
+
+.game-section .item.active .item-desc p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.game-section .owl-theme.custom-carousel .owl-dots {
+  margin-top: -20px;
+  position: relative;
+  z-index: 5;
+}
+
+/* RESPONSIVE CODE  */
+@media (min-width: 992px) and (max-width: 1199px) {
+  h2 {
+    margin-bottom: 32px;
+  }
+
+  h3 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .game-section {
+    padding: 50px 30px;
+  }
+
+  .game-section .item {
+    margin: 0 12px 60px;
+    width: 260px;
+    height: 360px;
+  }
+
+  .game-section .item.active {
+    width: 400px;
+  }
+
+  .game-section .item-desc {
+    transform: translateY(calc(100% - 46px));
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  h2 {
+    margin-bottom: 32px;
+  }
+
+  h3 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .line-title {
+    width: 330px;
+  }
+
+  .game-section {
+    padding: 50px 30px 40px;
+  }
+
+  .game-section .item {
+    margin: 0 12px 60px;
+    width: 240px;
+    height: 330px;
+  }
+
+  .game-section .item.active {
+    width: 360px;
+  }
+
+  .game-section .item-desc {
+    transform: translateY(calc(100% - 42px));
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: 14px;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 19px;
+    line-height: 24px;
+  }
+
+  .line-title {
+    width: 250px;
+  }
+
+  .game-section {
+    padding: 30px 15px 20px;
+  }
+
+  .game-section .item {
+    margin: 0 10px 40px;
+    width: 200px;
+    height: 280px;
+  }
+
+  .game-section .item.active {
+    width: 270px;
+    box-shadow: 6px 10px 10px rgba(0, 0, 0, 0.25);
+  }
+
+  .game-section .item-desc {
+    padding: 0 14px 5px;
+    transform: translateY(calc(100% - 42px));
+  }
+}
+
+/* END LUCA */
 
 /* michelle */
-.body2{
-    background-color: #141414;
-}
-
-.toggleHeadings{
-    display: flex;
-    justify-content: center;
-    color: #f8f8f8;
-}
-
-.toggleLineLeft{
-  width: 200px;
-  height: 4px;
-  background-color: #8D54FF;
-}
-
-.toggleLineRight{
-  width: 200px;
-  height: 4px;
-  background-color: #53CAE4;
-}
 
 #bodyContentLibrary{
     height: 100%;
@@ -1202,9 +1324,9 @@ form:focus-within .fa-magnifying-glass {
 }
 
 .movieCarouselItem img:hover, .card-img-top:hover {
-    box-shadow: 0 0 8px rgba(138, 43, 226, 0.8);
+    box-shadow: 0 20px 40px -15px rgba(138, 43, 226, 0.8);
     cursor: pointer;
-    transform: scale(1.03);
+    transform: translateY(-8px);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
