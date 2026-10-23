@@ -243,11 +243,11 @@ border-bottom: 3px solid #53CAE4;
   margin: 0;
   padding: 40px;
   min-height: 100vh;
-}
+  
 .movie-card:hover .movie-poster {
   box-shadow: 0 20px 40px -15px #8D54FF;
 }
-
+}
 
 
 
@@ -301,7 +301,7 @@ h1 {
 /* new code */
 html, body {
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-}
+
 :root {
   --main-font: "Montserrat", sans-serif;
   --main-color: #b61dfd;
@@ -621,39 +621,28 @@ main section .content .info .buttons {
 
 /* luca */
 
-/* responsive screen */
-@media (max-width: 700px) {
-  .wrapper {
-    padding: 15px 20px;
-  }
-  .wrapper .logo-container {
-    margin-bottom: 5px;
-  }
-  .wrapper .slide-controls {
-    margin: 10px 0;
-  }
-}
 
 .body1 {
-  padding-top: 20px;
   display: grid;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   place-items: center;
   background: url(/img/login_bg_img.png);
-  place-items: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 /* card */
 .wrapper {
   max-width: 380px;
-  width: 90%;
+  width: 100%;
   background: #121212;
   padding: 30px;
   border-radius: 16px;
   border: 2px solid #8a2be2;
   box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
-  box-sizing: border-box;
 }
 
 /* logo header */
@@ -807,7 +796,6 @@ input[type="radio"] {
   font-size: 14px;
   transition: all 0.3s ease;
   border: 2px solid #8a2be2;
-  box-sizing: border-box;
 }
 
 /* email/username & password  */
