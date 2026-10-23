@@ -244,11 +244,11 @@ border-bottom: 3px solid #53CAE4;
   margin: 0;
   padding: 40px;
   min-height: 100vh;
-  
+}
 .movie-card:hover .movie-poster {
   box-shadow: 0 20px 40px -15px #8D54FF;
 }
-}
+
 
 
 
@@ -294,7 +294,7 @@ $growFactor = 1.5 // 1.5 times the original size
 $moveLeft = -($tileWidth * ($growFactor - 1) / 2)
 $moveRight = $tileWidth * ($growFactor - 1)
 
-body, html
+body, html {
   padding: 0 10px
   margin: 0
   background: #0E0F11
@@ -305,7 +305,7 @@ body, html
   flex-direction: row
   align-items: center
   width: 100%
-
+}
 * { box-sizing: border-box }
 
 h1, p
@@ -449,7 +449,7 @@ a:hover
 /* new code */
 html, body {
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
+}
 :root {
   --main-font: "Montserrat", sans-serif;
   --main-color: #b61dfd;
@@ -769,28 +769,39 @@ main section .content .info .buttons {
 
 /* luca */
 
+/* responsive screen */
+@media (max-width: 700px) {
+  .wrapper {
+    padding: 15px 20px;
+  }
+  .wrapper .logo-container {
+    margin-bottom: 5px;
+  }
+  .wrapper .slide-controls {
+    margin: 10px 0;
+  }
+}
 
 .body1 {
+  padding-top: 20px;
   display: grid;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   place-items: center;
   background: url(/img/login_bg_img.png);
-  background-repeat: no-repeat;
-  background-size:cover;
-  background-position: center;
-  background-attachment: fixed;
+  place-items: center;
 }
 
 /* card */
 .wrapper {
   max-width: 380px;
-  width: 100%;
+  width: 90%;
   background: #121212;
   padding: 30px;
   border-radius: 16px;
   border: 2px solid #8a2be2;
   box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+  box-sizing: border-box;
 }
 
 /* logo header */
@@ -944,6 +955,7 @@ input[type="radio"] {
   font-size: 14px;
   transition: all 0.3s ease;
   border: 2px solid #8a2be2;
+  box-sizing: border-box;
 }
 
 /* email/username & password  */
@@ -1006,6 +1018,325 @@ form .btn input[type="submit"]:hover {
     text-decoration: underline;
 }
 
+
+/* LUCA HOME PAGE CSS */
+
+/* NAVBAR */
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  background: url(/img/login_bg_img.png);  
+  color: #fff;
+}
+
+img {
+  max-width: 100%;
+  border: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  transition: all 0.4s ease-in-out;
+}
+
+a:hover {
+  color: #53CAE4;
+}
+
+.navbar {
+  margin: 20px 40px;
+  background-color: #0f0f0f;
+  border-radius: 45px;
+  border: 1px solid #8a2be2;
+  box-shadow: 0 0 8px rgba(138, 43, 226, 0.8);
+}
+
+.logo img {
+  max-height: 35px;
+  width: auto;
+}
+
+
+.container-fluid {
+  padding: 0 30px;
+}
+
+#active {
+  color: #53CAE4;
+}
+
+.nav-link {
+  color: #8a2be2;
+}
+
+.nav-link:hover {
+  color: #53CAE4;
+  transition: color 0.2s ease-in-out;
+}
+
+.fa-magnifying-glass {
+  color: #8a2be2;
+}
+
+.searchBox {
+  background-color: rgba(132, 38, 225, 0.3);
+  border-color: #8a2be2;
+  margin-top: -3px;
+  margin-bottom: -3px;
+  width: 270px;
+  color: #6d1db8;
+}
+
+.searchBox::placeholder {
+  color: #6d1db8;
+}
+
+.searchBox:focus {
+  background-color: rgba(38, 163, 231, 0.3);
+  border-color: #53CAE4;
+  color: #2e92a9;
+  box-shadow: 0 0 8px rgba(83, 202, 228, 0.8);
+}
+
+.searchBox:focus::placeholder {
+  color: #2e92a9;
+}
+
+form:focus-within .fa-magnifying-glass {
+  color: #53CAE4;
+  transition: color 0.2s ease-in-out;
+}
+
+.fa-bars {
+  color: #8a2be2;
+}
+
+.fa-bars:hover {
+  color: #53CAE4;
+}
+
+/* TITLES */
+
+h2 {
+  margin-bottom: 48px;
+  padding-bottom: 16px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  position: relative;
+  text-transform: capitalize;
+  color: #00aad1;
+}
+
+h3 {
+  margin: 0 0 10px;
+  font-size: 28px;
+  line-height: 36px;
+}
+
+/* Title underline */
+.line-title {
+  position: relative;
+  width: 400px;
+}
+
+.line-title::before,
+.line-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.line-title::before {
+  width: 100%;
+  background: #f2f2f2;
+}
+
+.line-title::after {
+  width: 32px;
+  background: #dc00c2;
+}
+
+/* GAME SECTION */
+
+.game-section {
+  padding: 60px 50px;
+}
+
+.game-section .owl-stage {
+  margin: 15px 0;
+  display: flex;
+}
+
+.game-section .item {
+  margin: 0 15px 60px;
+  width: 320px;
+  height: 400px;
+  display: flex;
+  align-items: flex-end;
+  background: #343434 no-repeat center center / cover;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+.game-section .item.active {
+  width: 500px;
+  box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);
+}
+
+.game-section .item::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+}
+
+.game-section .item-desc {
+  padding: 0 24px 12px;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transform: translateY(calc(100% - 54px));
+  transition: all 0.4s ease-in-out;
+}
+
+.game-section .item.active .item-desc {
+  transform: none;
+}
+
+.game-section .item-desc p {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: all 0.4s ease-in-out 0.2s;
+}
+
+.game-section .item.active .item-desc p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.game-section .owl-theme.custom-carousel .owl-dots {
+  margin-top: -20px;
+  position: relative;
+  z-index: 5;
+}
+
+/* RESPONSIVE CODE  */
+@media (min-width: 992px) and (max-width: 1199px) {
+  h2 {
+    margin-bottom: 32px;
+  }
+
+  h3 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .game-section {
+    padding: 50px 30px;
+  }
+
+  .game-section .item {
+    margin: 0 12px 60px;
+    width: 260px;
+    height: 360px;
+  }
+
+  .game-section .item.active {
+    width: 400px;
+  }
+
+  .game-section .item-desc {
+    transform: translateY(calc(100% - 46px));
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  h2 {
+    margin-bottom: 32px;
+  }
+
+  h3 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .line-title {
+    width: 330px;
+  }
+
+  .game-section {
+    padding: 50px 30px 40px;
+  }
+
+  .game-section .item {
+    margin: 0 12px 60px;
+    width: 240px;
+    height: 330px;
+  }
+
+  .game-section .item.active {
+    width: 360px;
+  }
+
+  .game-section .item-desc {
+    transform: translateY(calc(100% - 42px));
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: 14px;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 19px;
+    line-height: 24px;
+  }
+
+  .line-title {
+    width: 250px;
+  }
+
+  .game-section {
+    padding: 30px 15px 20px;
+  }
+
+  .game-section .item {
+    margin: 0 10px 40px;
+    width: 200px;
+    height: 280px;
+  }
+
+  .game-section .item.active {
+    width: 270px;
+    box-shadow: 6px 10px 10px rgba(0, 0, 0, 0.25);
+  }
+
+  .game-section .item-desc {
+    padding: 0 14px 5px;
+    transform: translateY(calc(100% - 42px));
+  }
+}
+
+/* END LUCA */
 
 .body2{
     background-color: #141414;
