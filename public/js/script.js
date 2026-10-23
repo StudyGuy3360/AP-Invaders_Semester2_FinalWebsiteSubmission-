@@ -256,6 +256,7 @@ const options = {
 //     '.contLibFilterButton[data-target="allMoviesSection"]'
 // ).classList.add('active');
 
+<<<<<<< Updated upstream
 
 
 
@@ -443,6 +444,8 @@ document.querySelector(
 
 
 
+=======
+>>>>>>> Stashed changes
 // individual item api
 document.getElementById('movieGridContainer').addEventListener('click', (e) => {
     e.preventDefault();
