@@ -19,23 +19,25 @@ const options = {
             .then(result => {return result})
             .catch(err => console.error(err));
 
+  for (let page = 2; page <= 5; page++) {
+    let moreData = await fetch(
+        `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,
+        options
+    ).then(res => res.json());
+
+    data.results.push(...moreData.results);
+  }
+
   console.log(data);
 
   console.log(data.results[0].title);
 
-  let title = data[0].title;
-  let rating = data[0].rating;
-  let link = data[0].imdb_link;
-  let image = data[0].image;
+  apiMovies = data.results;
 
-  let newMovie = new Movie(title, rating, link, image);
+  console.log("Total movies:", apiMovies.length);
 
-  document.getElementById('title').innerHTML = newMovie.title;
-  document.getElementById('content').innerHTML = newMovie.rating + "<br>" + newMovie.link + "<br>" + "<img src='" + newMovie.image + "'>";
-
-  console.log(newMovie);
-
-}();
+  renderAllMovies(apiMovies);
+}
 
 // class MediaItem {
 //     constructor(_title, _type, _url, _image) {
@@ -256,7 +258,6 @@ const options = {
 //     '.contLibFilterButton[data-target="allMoviesSection"]'
 // ).classList.add('active');
 
-<<<<<<< Updated upstream
 
 
 
@@ -290,17 +291,19 @@ document.querySelectorAll('.contLibFilterButton').forEach(button => {
 });
 
 function renderAllMovies(movies) {
-
     container.innerHTML = "";
 
     movies.forEach(movie => {
         const cardHtml = `
             <div class="col-6 col-sm-6 col-md-3 col-lg-2">
                 <div class="h-100 shadow">
-                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top rounded" alt="${movie.title}">
+                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" 
+                         class="card-img-top rounded" 
+                         alt="${movie.title}"
+                         data-id="${movie.id}"> <!-- Added data-id -->
                 </div>
             </div>
-        `; //API will probably be inserted here where the <img> is
+        `;
         container.insertAdjacentHTML('beforeend', cardHtml);
     });
 }
@@ -443,30 +446,23 @@ document.querySelector(
 ).classList.add('active');
 
 
-
-=======
->>>>>>> Stashed changes
-// individual item api
+// Individual api
 document.getElementById('movieGridContainer').addEventListener('click', (e) => {
-    e.preventDefault();
-
     const img = e.target.closest('img');
     if (!img) return;
 
-  
-    const clickedMovie = apiMovies.find(movie => img.src.includes(movie.poster_path));
+    const movieId = img.dataset.id;
+    const clickedMovie = apiMovies.find(movie => movie.id == movieId);
+
     if (clickedMovie) {
-        
         const IP = document.getElementById('IP');
         if (IP) {
             IP.src = `https://image.tmdb.org/t/p/w500${clickedMovie.poster_path}`;
             IP.alt = clickedMovie.title;
         }
 
-        
         const IndivPage = document.getElementById('IndivPage');
-        if (IndivPage) {
-            IndivPage.style.display = 'block';
+
         }
     }
-});
+);
