@@ -1,1 +1,8 @@
+PENCODE FOR LOGIN
 https://codepen.io/mr-zouraiz123/pen/ZEeKMVP
+
+code from Codepen for trending now page
+https://codepen.io/yudizsolutions/pen/wvzrPoj
+
+code from carousal bootstrap
+https://getbootstrap.com/docs/6.0/components/carousel/
