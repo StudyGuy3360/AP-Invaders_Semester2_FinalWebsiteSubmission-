@@ -876,27 +876,6 @@ form .btn input[type="submit"]:hover {
 }
 
 /* michelle */
-.body2{
-    background-color: #141414;
-}
-
-.toggleHeadings{
-    display: flex;
-    justify-content: center;
-    color: #f8f8f8;
-}
-
-.toggleLineLeft{
-  width: 200px;
-  height: 4px;
-  background-color: #8D54FF;
-}
-
-.toggleLineRight{
-  width: 200px;
-  height: 4px;
-  background-color: #53CAE4;
-}
 
 #bodyContentLibrary{
     height: 100%;

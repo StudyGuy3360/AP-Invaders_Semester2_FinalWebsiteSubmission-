@@ -37,8 +37,8 @@ const options = {
   console.log("Total movies:", apiMovies.length);
 
   renderAllMovies(apiMovies);
-}
 
+  
   //Search on ContLib
     const searchForm = document.getElementById("movieSearchForm");
     const searchInput = document.getElementById("movieSearchInput");
@@ -294,4 +294,5 @@ document.getElementById('movieGridContainer').addEventListener('click', (e) => {
         }
     }
 );
-).classList.add('active');
+
+classList.add('active');
