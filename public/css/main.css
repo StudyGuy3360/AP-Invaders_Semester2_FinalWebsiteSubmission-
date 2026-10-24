@@ -783,6 +783,19 @@ form .btn input[type="submit"]:hover {
 
 /* LUCA HOME PAGE CSS */
 
+.game-section{
+background-color: #f9f9f9;
+height: 800px;
+margin-top: 150px;
+border-color: #07c401;
+}
+
+.aboutUS{
+background-color: #c51919;
+height: 800px;
+margin-top: 0px;
+}
+
 /* NAVBAR */
 body {
   font-family: "Roboto", sans-serif;
@@ -1097,6 +1110,7 @@ h3 {
     transform: translateY(calc(100% - 42px));
   }
 }
+
 
 /* END LUCA */
 
