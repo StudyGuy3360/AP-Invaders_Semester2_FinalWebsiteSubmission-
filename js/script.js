@@ -1,31 +1,4 @@
 //WatchlistJS
-document.querySelectorAll('.card-row').forEach(row => {
-let isDown = false;
- let startX;
-let scrollLeft;
-
- row.addEventListener('mousedown', (e) => {
-isDown = true;
-startX = e.pageX - row.offsetLeft;
-scrollLeft = row.scrollLeft;
- });
-
-row.addEventListener('mouseleave', () => {
-isDown = false;
-});
-
-row.addEventListener('mouseup', () => {
-isDown = false;
- });
-
-row.addEventListener('mousemove', (e) => {
-if (!isDown) return;
- e.preventDefault();
-const x = e.pageX - row.offsetLeft;
-const walk = (x - startX) * 1.5; 
- row.scrollLeft = scrollLeft - walk;
-  });
-});
 
 
 
@@ -44,15 +17,6 @@ document.body.className = "watchlistBody";
 
 });
 
-
-//                     <button class="btn btn-sm carouselArrow"
-//                             type="button"
-//                             data-scroll="next"
-//                             data-carousel="${id}">
-//                         &#10095;
-//                     </button>
-//                 </div>
-//             </div>
 favouritesBtn.addEventListener("click", function() {
   watchlistPage.style.display = "none";
 favouritesPage.style.display = "block";
