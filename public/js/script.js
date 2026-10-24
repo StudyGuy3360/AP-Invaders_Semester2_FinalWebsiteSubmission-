@@ -118,11 +118,19 @@ function renderAllMovies(movies) {
     movies.forEach(movie => {
         const cardHtml = `
             <div class="col-6 col-sm-6 col-md-3 col-lg-2">
-                <div class="h-100 shadow">
+                <div class="h-100 shadow" moviePoster>
                     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top rounded" alt="${movie.title}">
-                </div>
+                    <div class="movieActions">
+                        <button class="movieActionBtn watchlistBtn" type="button" data-movie-id="${movie.id}" aria-label="Add to Watchlist">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <button class="movieActionBtn favouriteBtn" type="button" data-movie-id="${movie.id}" aria-label="Add to Favourites">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>    
             </div>
-        `; //API will probably be inserted here where the <img> is
+        `;
         container.insertAdjacentHTML('beforeend', cardHtml);
     });
 }
@@ -180,11 +188,21 @@ function createCarousel(title, id, movies) {
             </div>
 
             <div id="${id}" class="movieCarousel">
-              ${movies.map(movie => `
-                  <div class="movieCarouselItem">
-                      <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-                  </div>
-              `).join("")}
+                ${movies.map(movie => `
+                    <div class="movieCarouselItem">
+                        <div class="moviePoster">
+                            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+                            <div class="movieActions">
+                                <button class="movieActionBtn watchlistBtn" type="button" data-movie-id="${movie.id}" aria-label="Add to Watchlist">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                                <button class="movieActionBtn favouriteBtn" type="button" data-movie-id="${movie.id}" aria-label="Add to Favourites">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join("")}
             </div>
         </div>
     `;
