@@ -1,3 +1,5 @@
+// LUCA
+
 // TRENDING SECTION
 $(document).ready(function () {
 $(".custom-carousel").owlCarousel({
@@ -11,3 +13,6 @@ $(".custom-carousel").owlCarousel({
     $(this).toggleClass("active");
   });
 });
+
+
+
