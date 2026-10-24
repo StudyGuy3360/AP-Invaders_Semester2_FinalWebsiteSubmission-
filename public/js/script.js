@@ -38,6 +38,63 @@ const options = {
 
   renderAllMovies(apiMovies);
 
+
+
+// danielle
+//WatchlistJS
+
+
+const watchlistBtn = document.getElementById("watchlistBtn");
+const favouritesBtn = document.getElementById("favouritesBtn");
+  const watchlistPage = document.getElementById("watchlistPage");
+const favouritesPage = document.getElementById("favouritesPage");
+  const pageTitle = document.getElementById("pageTitle");
+
+watchlistBtn.addEventListener("click", function() {
+  watchlistPage.style.display = "block";
+favouritesPage.style.display = "none";
+  pageTitle.textContent = "My Watchlist";
+document.body.className = "watchlistBody";
+
+
+});
+
+
+favouritesBtn.addEventListener("click", function() {
+  watchlistPage.style.display = "none";
+favouritesPage.style.display = "block";
+pageTitle.textContent = "My Favorites";
+document.body.className = "favouritesBody";
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   //Search on ContLib
     const searchForm = document.getElementById("movieSearchForm");
     const searchInput = document.getElementById("movieSearchInput");
@@ -288,32 +345,7 @@ document.getElementById('movieGridContainer').addEventListener('click', (e) => {
 });
 
 
-// danielle
-//WatchlistJS
 
-
-const watchlistBtn = document.getElementById("watchlistBtn");
-const favouritesBtn = document.getElementById("favouritesBtn");
-  const watchlistPage = document.getElementById("watchlistPage");
-const favouritesPage = document.getElementById("favouritesPage");
-  const pageTitle = document.getElementById("pageTitle");
-
-watchlistBtn.addEventListener("click", function() {
-  watchlistPage.style.display = "block";
-favouritesPage.style.display = "none";
-  pageTitle.textContent = "My Watchlist";
-document.body.className = "watchlistBody";
-
-
-});
-
-
-favouritesBtn.addEventListener("click", function() {
-  watchlistPage.style.display = "none";
-favouritesPage.style.display = "block";
-pageTitle.textContent = "Replays";
-document.body.className = "favouritesBody";
-});
 
 
 
@@ -337,3 +369,12 @@ signupLink.onclick = (() => {
   signupBtn.click();
   return false;
 });
+
+
+
+
+
+
+
+
+
