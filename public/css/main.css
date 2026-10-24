@@ -82,9 +82,8 @@ form:focus-within .fa-magnifying-glass {
 
 /*Danielle*/
 
-
-#watchlistBody{
-background: linear-gradient(to bottom, #141414 ,#4817c5);
+.watchlistBody{
+background: linear-gradient(to bottom, #141414 ,#8D54FF);
   color: #ffffff;
   font-family:Arial, Helvetica, sans-serif;
   margin: 0;
@@ -161,7 +160,7 @@ padding: 10px 250px;
 
 
 
-#watchlistBody{
+.watchlistBody{
 background: linear-gradient(to bottom, #141414 ,#8D54FF);
   color: #ffffff;
   font-family:Arial, Helvetica, sans-serif;
