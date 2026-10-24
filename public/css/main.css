@@ -175,7 +175,12 @@ background: linear-gradient(to bottom, #141414 ,#8D54FF);
   margin: 0;
 }
 
-
+#watchlistPage div, 
+#favouritesPage div {
+    background-color: transparent !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
 
 
 
