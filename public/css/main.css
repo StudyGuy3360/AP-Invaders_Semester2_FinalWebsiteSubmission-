@@ -161,7 +161,7 @@ padding: 10px 250px;
 
 
 .watchlistBody{
-background: linear-gradient(to bottom, #141414 ,#53CAE4);
+background: #157c93;
   color: #ffffff;
   font-family:Arial, Helvetica, sans-serif;
   margin: 0;
@@ -169,7 +169,7 @@ background: linear-gradient(to bottom, #141414 ,#53CAE4);
 
 
 .favouritesBody {
-background: linear-gradient(to bottom, #141414 ,#8D54FF);
+background:#4d3088;
   color: #ffffff;
   font-family:Arial, Helvetica, sans-serif;
   margin: 0;
