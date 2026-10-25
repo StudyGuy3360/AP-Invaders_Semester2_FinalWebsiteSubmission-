@@ -54,6 +54,9 @@ function addMovieToList(movie, listName) {
         overview: movie.overview
     });
 
+
+
+
     saveMovies(listName, savedMovies);
     alert(listName === "watchlist" ? "Added to your Watchlist!" : "Added to your Favourites!");
 }
@@ -155,6 +158,8 @@ if (favouritesBtn && favouritesPage) {
         renderSavedList("favourites", favouritesPage);
     });
 }
+
+
 
 
 if (watchlistPage) {
