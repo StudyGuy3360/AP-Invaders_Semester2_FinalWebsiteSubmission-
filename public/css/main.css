@@ -82,13 +82,13 @@ form:focus-within .fa-magnifying-glass {
 
 /*Danielle*/
 
-.watchlistBody{
-background: linear-gradient(to bottom, #141414 ,#8D54FF);
+/*.watchlistBody{
+background: linear-gradient(to bottom, #141414 ,#54ff87);
   color: #ffffff;
   font-family:Arial, Helvetica, sans-serif;
   margin: 0;
 }
-
+*/
 
 .moviePosters img:hover, .card-img-top:hover {
     cursor: pointer;
@@ -161,7 +161,7 @@ padding: 10px 250px;
 
 
 .watchlistBody{
-background: linear-gradient(to bottom, #141414 ,#8D54FF);
+background: linear-gradient(to bottom, #141414 ,#53CAE4);
   color: #ffffff;
   font-family:Arial, Helvetica, sans-serif;
   margin: 0;
@@ -175,13 +175,19 @@ background: linear-gradient(to bottom, #141414 ,#8D54FF);
   margin: 0;
 }
 
-#watchlistPage div, 
-#favouritesPage div {
-    background-color: transparent !important;
-    background: transparent !important;
-    box-shadow: none !important;
+
+.custom-remove-btn {
+    background-color: #ff4d4d; 
+    color: #ffffff;           
+    border: 1px solid #ff4d4d; 
 }
 
+
+.custom-remove-btn:hover {
+    background-color: #cc0000;
+    border-color: #cc0000;
+    color: #ffffff;
+}
 
 
 

@@ -70,7 +70,7 @@ function renderSavedList(listName, containerElement) {
     if (movies.length === 0) {
         containerElement.innerHTML = `
             <div class="p-4 text-center">
-                <p class="text-white">Your ${listName === "watchlist" ? "Watchlist" : "Favourites"} is empty. Add movies from the Library!</p>
+                <p class="text-white">Your ${listName === "watchlist" ? "Watchlist" : "Favourites"} is empty.Add movies from the library</p>
             </div>`;
         return;
     }
@@ -85,11 +85,17 @@ function renderSavedList(listName, containerElement) {
        
         col.innerHTML = `
             <div class="h-100" style="background: transparent !important; background-color: transparent !important; box-shadow: none !important;">
+
                 <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top rounded shadow" alt="${movie.title}">
+
                 <div class="mt-2" style="background: transparent !important; background-color: transparent !important;">
+
                     <h6 class="text-white text-truncate">${movie.title || "Untitled"}</h6>
+
                     <p class="text-white-50 small mb-2">⭐ ${Number(movie.vote_average || 0).toFixed(1)}</p>
-                    <button class="btn btn-sm btn-danger remove-btn w-100" type="button" data-id="${movie.id}">Remove</button>
+
+                    <button class="btn btn-sm custom-remove-btn remove-btn w-100" type="button" data-id="${movie.id}">Remove</button>
+
                 </div>
             </div>
         `;
@@ -158,28 +164,23 @@ const options = {
 };
 
  let data = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
-            .then(res => res.json())
-            .then(result => {return result})
-            .catch(err => console.error(err));
+ .then(res => res.json())
+ .then(result => {return result})
+.catch(err => console.error(err));
 
-  for (let page = 2; page <= 5; page++) {
-    let moreData = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,
+ for (let page = 2; page <= 5; page++) {
+let moreData = await fetch( `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,
         options
-    ).then(res => res.json());
+).then(res => res.json());
 
-    data.results.push(...moreData.results);
+data.results.push(...moreData.results);
   }
 
   console.log(data);
-
-  console.log(data.results[0].title);
-
-  apiMovies = data.results;
-
-  console.log("Total movies:", apiMovies.length);
-
-  renderAllMovies(apiMovies);
+console.log(data.results[0].title);
+apiMovies = data.results;
+console.log("Total movies:", apiMovies.length);
+renderAllMovies(apiMovies);
 
 
 
