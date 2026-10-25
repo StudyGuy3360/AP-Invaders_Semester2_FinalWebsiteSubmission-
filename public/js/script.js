@@ -19,9 +19,13 @@ const pageTitle = document.getElementById("pageTitle");
 function getSavedMovies(listName) {
     try {
         const saved = JSON.parse(localStorage.getItem(listName));
-        return Array.isArray(saved) ? saved : [];
+        if (Array.isArray(saved)) {
+    return saved;
+} else {
+    return [];
+}
     } catch (error) {
-        console.error("Could not read saved movies:", error);
+        console.error("couldn't get moviesa:", error);
         return [];
     }
 }
