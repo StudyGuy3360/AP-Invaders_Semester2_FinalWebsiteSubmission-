@@ -310,7 +310,7 @@ function renderAllMovies(movies) {
     movies.forEach(movie => {
         const cardHtml = `
             <div class="col-6 col-sm-6 col-md-3 col-lg-2">
-                <div class="h-100 shadow" moviePoster>
+                <div class="h-100 shadow moviePoster">
                     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top rounded" alt="${movie.title}">
                     <div class="movieActions">
                         <button class="movieActionBtn watchlistBtn" type="button" data-movie-id="${movie.id}" aria-label="Add to Watchlist">
@@ -357,7 +357,7 @@ const audienceRatings = [
     { name: "Mixed Reviews", min: 0, max: 6 }
 ];
 
-function createCarousel(title, id, movies) {
+function createCarousel(title, id, movies, showRating = false) {
     return `
         <div class="genreTitle">
             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -392,6 +392,12 @@ function createCarousel(title, id, movies) {
                                     <i class="fa-regular fa-heart"></i>
                                 </button>
                             </div>
+                            ${showRating ? `
+                                <div class="movieRating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <span>${movie.vote_average.toFixed(1)}</span>
+                                </div>
+                            ` : ""}
                         </div>
                     </div>
                 `).join("")}
@@ -449,7 +455,8 @@ function renderAudienceRating() {
         return createCarousel(
             rating.name,
             `${rating.min}RatingCarousel`,
-            ratingMovies
+            ratingMovies, 
+            true
         );
 
     }).join("");
