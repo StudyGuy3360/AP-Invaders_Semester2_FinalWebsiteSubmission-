@@ -53,18 +53,21 @@ overview: movie.overview});
 
 saveMovies(listName, savedMovies);
 if (listName === "watchlist") {
-    alert("Added to your Watchlist!");
+alert("Added to your Watchlist!");
 } else {
-    alert("Added to your Favourites!");
+alert("Added to your Favourites!");
 };}
 
 
 
 function removeMovieFromList(movieId, listName) {
 const movies = getSavedMovies(listName);
-const updated = movies.filter(m => String(m.id) !== String(movieId));
+const updated = movies.filter(movie => String(movie.id) !== String(movieId));
 saveMovies(listName, updated);
 renderSavedList(listName, listName === "watchlist" ? watchlistPage : favouritesPage);}
+
+
+
 
 function renderSavedList(listName, containerElement) 
 {if (!containerElement) return;
