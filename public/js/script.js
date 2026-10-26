@@ -16,145 +16,131 @@ const watchlistPage = document.getElementById("watchlistPage");
 const favouritesPage = document.getElementById("favouritesPage");
 const pageTitle = document.getElementById("pageTitle");
 
+
 function getSavedMovies(listName) {
-    
-    const saved = JSON.parse(localStorage.getItem(listName));
-    return Array.isArray(saved) ? saved : [];
-}
+const saved = JSON.parse(localStorage.getItem(listName));
+return Array.isArray(saved) ? saved : [];}
 
 
 function saveMovies(listName, movies) {
-    localStorage.setItem(listName, JSON.stringify(movies));
-}
+localStorage.setItem(listName, JSON.stringify(movies));}
 
-function addMovieToList(movie, listName) {
-    if (!movie || movie.id == null) return;
+function addMovieToList(movie, listName) 
+{if (!movie || movie.id == null) return;
     
-    const savedMovies = getSavedMovies(listName);
-    const alreadyExists = savedMovies.some(saved => String(saved.id) === String(movie.id));
+const savedMovies = getSavedMovies(listName);
+const alreadyExists = savedMovies.some(saved => String(saved.id) === String(movie.id));
 
-    if (alreadyExists) {
 
-if (listName === "watchlist") {
-    alert("This movie is already in your Watchlist");
-} else {
-    alert("This movie is already in your Favourites");
-}
- return;
-        
-    }
 
-    savedMovies.push({
-        id: movie.id,
-        title: movie.title,
-        poster_path: movie.poster_path,
-        vote_average: movie.vote_average,
-        release_date: movie.release_date,
-        overview: movie.overview
-    });
+if (alreadyExists) 
+{if (listName === "watchlist") {
+alert("This movie is already in your Watchlist");} else {
+ alert("This movie is already in your Favourites");}
+ return;}
+
+
+savedMovies.push({
+id: movie.id,
+ title: movie.title,
+poster_path: movie.poster_path,
+ vote_average: movie.vote_average,
+release_date: movie.release_date,
+overview: movie.overview});
 
 
 
 
-    saveMovies(listName, savedMovies);
-    alert(listName === "watchlist" ? "Added to your Watchlist!" : "Added to your Favourites!");
-}
+saveMovies(listName, savedMovies);
+alert(listName === "watchlist" ? "Added to your Watchlist!" : "Added to your Favourites!");}
+
+
 
 function removeMovieFromList(movieId, listName) {
-    const movies = getSavedMovies(listName);
-    const updated = movies.filter(m => String(m.id) !== String(movieId));
-    saveMovies(listName, updated);
-    renderSavedList(listName, listName === "watchlist" ? watchlistPage : favouritesPage);
-}
+const movies = getSavedMovies(listName);
+const updated = movies.filter(m => String(m.id) !== String(movieId));
+saveMovies(listName, updated);
+renderSavedList(listName, listName === "watchlist" ? watchlistPage : favouritesPage);}
 
-function renderSavedList(listName, containerElement) {
-    if (!containerElement) return;
+function renderSavedList(listName, containerElement) 
+{if (!containerElement) return;
     
-    containerElement.innerHTML = "";
-    const movies = getSavedMovies(listName);
+containerElement.innerHTML = "";
+const movies = getSavedMovies(listName);
 
-    if (movies.length === 0) {
-        containerElement.innerHTML = `
-            <div class="p-4 text-center">
-                <p class="text-white">Your ${listName === "watchlist" ? "Watchlist" : "Favourites"} is empty.Add movies from the library</p>
-            </div>`;
-        return;
-    }
+if (movies.length === 0) {
+containerElement.innerHTML = `
+<div class="p-4 text-center">
+<p class="text-white">Your ${listName === "watchlist" ? "Watchlist" : "Favourites"} is empty.Add movies from the library</p>
+ </div>`;
+ return;}
 
-    const row = document.createElement("div");
-    row.className = "row g-4 px-4 my-2";
+const row = document.createElement("div");
+row.className = "row g-4 px-4 my-2";
 
-    movies.forEach(movie => {
-        const col = document.createElement("div");
-        col.className = "col-6 col-sm-6 col-md-3 col-lg-2";
+movies.forEach(movie => {
+const col = document.createElement("div");
+col.className = "col-6 col-sm-6 col-md-3 col-lg-2";
 
        
-        col.innerHTML = `
-            <div class="h-100" style="background: transparent !important; background-color: transparent !important; box-shadow: none !important;">
+ col.innerHTML = `
+<div class="h-100" style="background: transparent !important; background-color: transparent !important; box-shadow: none !important;">
 
-                <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top rounded shadow" alt="${movie.title}">
+<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top rounded shadow" alt="${movie.title}">
 
-                <div class="mt-2" style="background: transparent !important; background-color: transparent !important;">
+<div class="mt-2" style="background: transparent !important; background-color: transparent !important;">
 
-                    <h6 class="text-white text-truncate">${movie.title || "Untitled"}</h6>
+<h6 class="text-white text-truncate">${movie.title || "Untitled"}</h6>
 
-                    <p class="text-white-50 small mb-2">⭐ ${Number(movie.vote_average || 0).toFixed(1)}</p>
+ <p class="text-white-50 small mb-2">⭐ ${Number(movie.vote_average || 0).toFixed(1)}</p>
 
-                    <button class="btn btn-sm custom-remove-btn remove-btn w-100" type="button" data-id="${movie.id}">Remove</button>
+<button class="btn btn-sm custom-remove-btn remove-btn w-100" type="button" data-id="${movie.id}">Remove</button>
 
-                </div>
-            </div>
-        `;
+</div>
+</div>`;
 
-        col.querySelector(".remove-btn").addEventListener("click", () => {
-            removeMovieFromList(movie.id, listName);
-        });
+col.querySelector(".remove-btn").addEventListener("click", () => {
+removeMovieFromList(movie.id, listName); });
 
-        row.appendChild(col);
-    });
+ row.appendChild(col);});
 
-    containerElement.appendChild(row);
-}
+containerElement.appendChild(row);}
 
 
 document.addEventListener("click", (event) => {
-    const watchlistBtnTarget = event.target.closest(".watchlistBtn");
-    const favouriteBtnTarget = event.target.closest(".favouriteBtn");
+const watchlistBtnTarget = event.target.closest(".watchlistBtn");
+const favouriteBtnTarget = event.target.closest(".favouriteBtn");
 
-    if (watchlistBtnTarget) {
-        const movieId = watchlistBtnTarget.dataset.movieId;
-        const movie = apiMovies.find(m => String(m.id) === String(movieId));
-        if (movie) {
-            addMovieToList(movie, "watchlist");
-        }
-    }
+if (watchlistBtnTarget) {
+const movieId = watchlistBtnTarget.dataset.movieId;
+const movie = apiMovies.find(m => String(m.id) === String(movieId));
+ if (movie) {
+ addMovieToList(movie, "watchlist");}}
 
-    if (favouriteBtnTarget) {
-        const movieId = favouriteBtnTarget.dataset.movieId;
-        const movie = apiMovies.find(m => String(m.id) === String(movieId));
-        if (movie) {
-            addMovieToList(movie, "favourites");
-        }
-    }
+if (favouriteBtnTarget) {
+const movieId = favouriteBtnTarget.dataset.movieId;
+const movie = apiMovies.find(m => String(m.id) === String(movieId));
+if (movie) {
+ addMovieToList(movie, "favourites"); }}
 });
 
 if (watchlistBtn && watchlistPage) {
-    watchlistBtn.addEventListener("click", function() {
-        watchlistPage.style.display = "block";
-        if (favouritesPage) favouritesPage.style.display = "none";
-        if (pageTitle) pageTitle.textContent = "My Watchlist";
-        document.body.className = "watchlistBody";
-        renderSavedList("watchlist", watchlistPage);
+watchlistBtn.addEventListener("click", function() {
+ watchlistPage.style.display = "block";
+if (favouritesPage) favouritesPage.style.display = "none";
+if (pageTitle) pageTitle.textContent = "My Watchlist";
+document.body.className = "watchlistBody";
+ renderSavedList("watchlist", watchlistPage);
     });
 }
 
 if (favouritesBtn && favouritesPage) {
-    favouritesBtn.addEventListener("click", function() {
-        if (watchlistPage) watchlistPage.style.display = "none";
-        favouritesPage.style.display = "block";
-        if (pageTitle) pageTitle.textContent = "My Favorites";
-        document.body.className = "favouritesBody";
-        renderSavedList("favourites", favouritesPage);
+favouritesBtn.addEventListener("click", function() {
+ if (watchlistPage) watchlistPage.style.display = "none";
+ favouritesPage.style.display = "block";
+ if (pageTitle) pageTitle.textContent = "My Favorites";
+ document.body.className = "favouritesBody";
+renderSavedList("favourites", favouritesPage);
     });
 }
 
@@ -162,7 +148,7 @@ if (favouritesBtn && favouritesPage) {
 
 
 if (watchlistPage) {
-    renderSavedList("watchlist", watchlistPage);
+ renderSavedList("watchlist", watchlistPage);
 }
 !async function(){
 
