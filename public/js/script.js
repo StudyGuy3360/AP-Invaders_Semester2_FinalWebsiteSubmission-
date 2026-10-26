@@ -17,18 +17,11 @@ const favouritesPage = document.getElementById("favouritesPage");
 const pageTitle = document.getElementById("pageTitle");
 
 function getSavedMovies(listName) {
-    try {
-        const saved = JSON.parse(localStorage.getItem(listName));
-        if (Array.isArray(saved)) {
-    return saved;
-} else {
-    return [];
+    
+    const saved = JSON.parse(localStorage.getItem(listName));
+    return Array.isArray(saved) ? saved : [];
 }
-    } catch (error) {
-        console.error("couldn't get moviesa:", error);
-        return [];
-    }
-}
+
 
 function saveMovies(listName, movies) {
     localStorage.setItem(listName, JSON.stringify(movies));
@@ -43,9 +36,9 @@ function addMovieToList(movie, listName) {
     if (alreadyExists) {
 
 if (listName === "watchlist") {
-    alert("This movie is already in your Watchlist.");
+    alert("This movie is already in your Watchlist");
 } else {
-    alert("This movie is already in your Favourites.");
+    alert("This movie is already in your Favourites");
 }
  return;
         
