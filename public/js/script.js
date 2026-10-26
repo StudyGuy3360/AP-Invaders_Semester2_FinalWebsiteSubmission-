@@ -113,15 +113,11 @@ col.className = "col-6 col-sm-6 col-md-3 col-lg-2";
 
        
  col.innerHTML = `
-<div class="h-100" style="background: transparent !important; background-color: transparent !important; box-shadow: none !important;">
 
-<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top rounded shadow" alt="${movie.title}">
 
-<div class="mt-2" style="background: transparent !important; background-color: transparent !important;">
+<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top rounded shadow"">
 
 <h6 class="text-white text-truncate">${movie.title || "Untitled"}</h6>
-
- <p class="text-white-50 small mb-2">⭐ ${Number(movie.vote_average || 0).toFixed(1)}</p>
 
 <button class="btn btn-sm custom-remove-btn remove-btn w-100" type="button" data-id="${movie.id}">Remove</button>
 
@@ -139,9 +135,13 @@ removeMovieFromList(movie.id, listName); });
 containerElement.appendChild(row);}
 
 
+
+
 document.addEventListener("click", (event) => {
 const watchlistBtnTarget = event.target.closest(".watchlistBtn");
 const favouriteBtnTarget = event.target.closest(".favouriteBtn");
+
+
 
 if (watchlistBtnTarget) {
 const movieId = watchlistBtnTarget.dataset.movieId;
@@ -149,12 +149,16 @@ const movie = apiMovies.find(movie => String(movie.id) === String(movieId));
  if (movie) {
  addMovieToList(movie, "watchlist");}}
 
+
+
 if (favouriteBtnTarget) {
 const movieId = favouriteBtnTarget.dataset.movieId;
 const movie = apiMovies.find(movie => String(movie.id) === String(movieId));
 if (movie) {
  addMovieToList(movie, "favourites"); }}
 });
+
+
 
 if (watchlistBtn && watchlistPage) {
 watchlistBtn.addEventListener("click", function() {
@@ -165,6 +169,8 @@ document.body.className = "watchlistBody";
  renderSavedList("watchlist", watchlistPage);
     });
 }
+
+
 
 if (favouritesBtn && favouritesPage) {
 favouritesBtn.addEventListener("click", function() {
@@ -189,19 +195,23 @@ const options = {
   headers: {accept: 'application/json',  Authorization: 'Bearer  eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNDM2YjBmZDlhNjJiZTI2MDUxMTI2MDA2NmM0ZWIzYiIsIm5iZiI6MTc5MjEzODE4NC4xNTUsInN1YiI6IjZhZDFkYmM4ZGI0YmYxMmI2MmIzZTc5ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mLj37yAOQSPUr6bmuhkc_T1XO0z1fGPEkcOrl6fizTc'}
 };
 
+
  let data = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
  .then(res => res.json())
  .then(result => {return result})
 .catch(err => console.error(err));
+
 
  for (let page = 2; page <= 5; page++) {
 let moreData = await fetch( `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,
         options
 ).then(res => res.json());
 
+
 data.results.push(...moreData.results);
   }
 
+  
   console.log(data);
 console.log(data.results[0].title);
 apiMovies = data.results;
