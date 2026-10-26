@@ -145,13 +145,13 @@ const favouriteBtnTarget = event.target.closest(".favouriteBtn");
 
 if (watchlistBtnTarget) {
 const movieId = watchlistBtnTarget.dataset.movieId;
-const movie = apiMovies.find(m => String(m.id) === String(movieId));
+const movie = apiMovies.find(movie => String(movie.id) === String(movieId));
  if (movie) {
  addMovieToList(movie, "watchlist");}}
 
 if (favouriteBtnTarget) {
 const movieId = favouriteBtnTarget.dataset.movieId;
-const movie = apiMovies.find(m => String(m.id) === String(movieId));
+const movie = apiMovies.find(movie => String(movie.id) === String(movieId));
 if (movie) {
  addMovieToList(movie, "favourites"); }}
 });
@@ -210,34 +210,7 @@ renderAllMovies(apiMovies);
 
 
 
-// danielle
-//WatchlistJS
 
-
-/*const watchlistBtn = document.getElementById("watchlistBtn");
-const favouritesBtn = document.getElementById("favouritesBtn");
-  const watchlistPage = document.getElementById("watchlistPage");
-const favouritesPage = document.getElementById("favouritesPage");
-  const pageTitle = document.getElementById("pageTitle");
-
-watchlistBtn.addEventListener("click", function() {
-  watchlistPage.style.display = "block";
-favouritesPage.style.display = "none";
-  pageTitle.textContent = "My Watchlist";
-document.body.className = "watchlistBody";
-
-
-});
-
-
-favouritesBtn.addEventListener("click", function() {
-  watchlistPage.style.display = "none";
-favouritesPage.style.display = "block";
-pageTitle.textContent = "My Favorites";
-document.body.className = "favouritesBody";
-});
-
-*/
 
 
 
