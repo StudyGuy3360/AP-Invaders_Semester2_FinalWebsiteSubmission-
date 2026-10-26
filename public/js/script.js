@@ -19,7 +19,11 @@ const pageTitle = document.getElementById("pageTitle");
 
 function getSavedMovies(listName) {
 const saved = JSON.parse(localStorage.getItem(listName));
-return Array.isArray(saved) ? saved : [];}
+if (Array.isArray(saved)) {
+return saved;
+} else {
+return [];
+}}
 
 
 function saveMovies(listName, movies) {
