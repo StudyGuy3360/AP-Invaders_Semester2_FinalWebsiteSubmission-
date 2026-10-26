@@ -211,8 +211,8 @@ let moreData = await fetch( `https://api.themoviedb.org/3/movie/popular?language
 data.results.push(...moreData.results);
   }
 
-  
-  console.log(data);
+
+console.log(data);
 console.log(data.results[0].title);
 apiMovies = data.results;
 console.log("Total movies:", apiMovies.length);
