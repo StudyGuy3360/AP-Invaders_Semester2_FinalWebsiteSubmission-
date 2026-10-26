@@ -84,12 +84,25 @@ function renderSavedList(listName, containerElement)
 containerElement.innerHTML = "";
 const movies = getSavedMovies(listName);
 
-if (movies.length === 0) {
-containerElement.innerHTML = `
-<div class="p-4 text-center">
-<p class="text-white">Your ${listName === "watchlist" ? "Watchlist" : "Favourites"} is empty.Add movies from the library</p>
- </div>`;
- return;}
+ if (movies.length === 0) {
+
+        let listTitle;
+
+        if (listName === "watchlist") {
+            listTitle = "Watchlist";
+        } else {
+            listTitle = "Favourites";
+        }
+
+        containerElement.innerHTML = `
+            <div class="p-4 text-center">
+                <p class="text-white">
+                    Your ${listTitle} is empty. Add movies from the library.
+                </p>
+            </div>`;
+
+        return;
+    }
 
 const row = document.createElement("div");
 row.className = "row g-4 px-4 my-2";
