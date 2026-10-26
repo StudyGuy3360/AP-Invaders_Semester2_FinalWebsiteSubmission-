@@ -41,8 +41,14 @@ function addMovieToList(movie, listName) {
     const alreadyExists = savedMovies.some(saved => String(saved.id) === String(movie.id));
 
     if (alreadyExists) {
-        alert(`This movie is already in your ${listName === "watchlist" ? "Watchlist" : "Favourites"}.`);
-        return;
+
+if (listName === "watchlist") {
+    alert("This movie is already in your Watchlist.");
+} else {
+    alert("This movie is already in your Favourites.");
+}
+ return;
+        
     }
 
     savedMovies.push({
