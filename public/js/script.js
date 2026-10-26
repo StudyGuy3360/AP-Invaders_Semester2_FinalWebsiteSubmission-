@@ -63,8 +63,17 @@ alert("Added to your Favourites!");
 function removeMovieFromList(movieId, listName) {
 const movies = getSavedMovies(listName);
 const updated = movies.filter(movie => String(movie.id) !== String(movieId));
-saveMovies(listName, updated);
-renderSavedList(listName, listName === "watchlist" ? watchlistPage : favouritesPage);}
+ saveMovies(listName, updated);
+
+let containerElement;
+if (listName === "watchlist") {
+containerElement = watchlistPage;
+} else {
+        containerElement = favouritesPage;
+    }
+
+ renderSavedList(listName, containerElement);
+}
 
 
 
