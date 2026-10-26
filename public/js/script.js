@@ -52,7 +52,11 @@ overview: movie.overview});
 
 
 saveMovies(listName, savedMovies);
-alert(listName === "watchlist" ? "Added to your Watchlist!" : "Added to your Favourites!");}
+if (listName === "watchlist") {
+    alert("Added to your Watchlist!");
+} else {
+    alert("Added to your Favourites!");
+};}
 
 
 
@@ -98,6 +102,9 @@ col.className = "col-6 col-sm-6 col-md-3 col-lg-2";
 
 </div>
 </div>`;
+
+
+
 
 col.querySelector(".remove-btn").addEventListener("click", () => {
 removeMovieFromList(movie.id, listName); });
