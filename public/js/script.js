@@ -6,10 +6,8 @@ class Movie{
     this.image = _image;
   }
 }
-// ==========================================
-// DANIELLE
-// ==========================================
 
+//watchlist//
 
 const watchlistBtn = document.getElementById("watchlistBtn");
 const favouritesBtn = document.getElementById("favouritesBtn");
@@ -29,6 +27,9 @@ return [];
 
 function saveMovies(listName, movies) {
 localStorage.setItem(listName, JSON.stringify(movies));}
+
+
+
 
 function addMovieToList(movie, listName) 
 {if (!movie || movie.id == null) return;
@@ -90,23 +91,20 @@ containerElement.innerHTML = "";
 const movies = getSavedMovies(listName);
 
  if (movies.length === 0) {
+ let listTitle;
+ if (listName === "watchlist") {
+ listTitle = "Watchlist";
+ } else {
+ listTitle = "Favourites";
+ }
 
-        let listTitle;
-
-        if (listName === "watchlist") {
-            listTitle = "Watchlist";
-        } else {
-            listTitle = "Favourites";
-        }
-
-        containerElement.innerHTML = `
-            <div class="p-4 text-center">
-                <p class="text-white">
-                    Your ${listTitle} is empty. Add movies from the library.
-                </p>
-            </div>`;
-
-        return;
+ containerElement.innerHTML = `
+<div class="p-4 text-center">
+<p class="text-white">
+ Your ${listTitle} is empty. Add movies from the library.
+ </p>
+</div>`;
+return;
     }
 
 const row = document.createElement("div");
@@ -118,8 +116,6 @@ col.className = "col-6 col-sm-6 col-md-3 col-lg-2";
 
        
  col.innerHTML = `
-
-
 <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top rounded shadow"">
 
 <h6 class="text-white text-center">${movie.title || "Untitled"}</h6>
@@ -222,14 +218,6 @@ console.log(data.results[0].title);
 apiMovies = data.results;
 console.log("Total movies:", apiMovies.length);
 renderAllMovies(apiMovies);
-
-
-
-
-
-
-
-
 
   //Search on ContLib
     const searchForm = document.getElementById("movieSearchForm");
