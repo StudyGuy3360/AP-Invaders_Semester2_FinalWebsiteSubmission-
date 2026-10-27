@@ -73,7 +73,7 @@
         <div id="IndivPage" style="display: none;" class="container my-4">
     
    
-    <img id="IP" class="img-fluid rounded shadow" style="max-width: 300px;" />
+     <div class = "singleMovieDisplay"></div>
       </div>
       <div class="info">
         <h2 class="title"><span id="title"> title </span></h2>
@@ -149,37 +149,7 @@
   <div class="card-row">
 
 <div class="movie-card">
-      <img src="/assets/img/Movie_placeholder.png" class="movie-poster">
-    </div>
-    <div class="movie-card">
-      <img src="/assets/img/Movie_placeholder.png" class="movie-poster">
-    </div>
-    <div class="movie-card">
-      <img src="/assets/img/Movie_placeholder.png" class="movie-poster">
-    </div>
-    <div class="movie-card">
-      <img src="/assest/img/Movie Placeholder (1).png" class="movie-poster">
-    </div>
-    <div class="movie-card">
-      <img src="/assest/img/Movie Placeholder (1).png" class="movie-poster">
-    </div>
-    <div class="movie-card">
-      <img src="/assest/img/Movie Placeholder (1).png" class="movie-poster">
-    </div>
-    <div class="movie-card">
-      <img src="/assest/img/Movie Placeholder (1).png" class="movie-poster">
-    </div>
-    <div class="movie-card">
-      <img src="/assest/img/Movie Placeholder (1).png" class="movie-poster">
-    </div>
-    <div class="movie-card">
-      <img src="/assest/img/Movie Placeholder (1).png" class="movie-poster">
-    </div>
-    <div class="movie-card">
-      <img src="/assest/img/Movie Placeholder (1).png" class="movie-poster">
-    </div>
 
-     
 </div>
 
 
@@ -194,21 +164,32 @@
  </div>
 </div>
 </div>
- 
-
- <!-- <header>
-  <div class="logo">
-   
-  </div>
-  <nav>
-    <li><a href="#film1" class="active navLink">Film 1</a></li>
-    <li><a href="#film2" class="navLink">More like this</a></li>
-    <li><a href="#film3" class="navLink"></a></li>
-  </nav>
-</header> -->
 
 
- 
+
+
+
+
+
+<div class="container my-5 text-white">
+    <div class="row">
+        <!-- Poster Display -->
+        <div class="col-md-4">
+            <img id="aboutPoster" class="img-fluid rounded shadow" alt="Movie Poster">
+        </div>
+        
+        <!-- Details Display -->
+        <div class="col-md-8">
+            <h1 id="aboutTitle"></h1>
+            <p id="aboutReleaseDate" class="text-muted"></p>
+            <p id="aboutRating" class="fw-bold"></p>
+            <hr>
+            <h3>Overview</h3>
+            <p id="aboutOverview"></p>
+        </div>
+    </div>
+</div>
+
 
 
 
@@ -220,6 +201,6 @@
     <script src="https://kit.fontawesome.com/eac5ca7781.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/script.js"></script>
+<script src="../js/script.js"></script>
 </body>
 </html>
