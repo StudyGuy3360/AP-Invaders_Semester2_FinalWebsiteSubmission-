@@ -474,92 +474,76 @@ document.querySelector(
 
 
 // Individual api// 2nd test version
-
-
-// ==========================================
-// Individual Movie Click & About Page Handler
-// ==========================================
-
-// Listen for clicks on any movie poster or card image across the app
+// posterClick.js
 document.addEventListener("click", (event) => {
-    // Ignore clicks if the user clicked a button (like Watchlist, Favourite, or Remove)
-    if (
-        event.target.closest(".watchlistBtn") || 
-        event.target.closest(".favouriteBtn") || 
-        event.target.closest(".remove-btn")
-    ) {
-        return;
+    const img = event.target.closest("img");
+    if (!img || event.target.closest("button")) return;
+
+    // Find the associated movie ID from nearby elements
+    const container = img.closest(".moviePoster") || img.closest(".col-6") || img.parentElement;
+    const btnWithId = container ? container.querySelector("[data-movie-id], [data-id]") : null;
+    
+    if (!btnWithId) return;
+    const movieId = btnWithId.dataset.movieId || btnWithId.dataset.id;
+
+    // Search for the movie in apiMovies or saved lists
+    let movie = null;
+    if (typeof apiMovies !== 'undefined') {
+        movie = apiMovies.find(m => String(m.id) === String(movieId));
+    }
+    
+    if (!movie) {
+        for (const listName of ["watchlist", "favourites"]) {
+            try {
+                const saved = JSON.parse(localStorage.getItem(listName)) || [];
+                movie = saved.find(m => String(m.id) === String(movieId));
+                if (movie) break;
+            } catch (e) {}
+        }
     }
 
-    // Check if the clicked element (or its parent) has a movie identifier
-    const movieCard = event.target.closest("[data-movie-id]") || event.target.closest("[data-id]");
-    
-    if (movieCard) {
-        const movieId = movieCard.dataset.movieId || movieCard.dataset.id;
-        
-        // 1. Try finding the movie in the main API movies array
-        let movie = apiMovies.find(m => String(m.id) === String(movieId));
-
-        // 2. Fallback: If not in apiMovies, check local storage (Watchlist / Favourites)
-        if (!movie) {
-            const watchlist = getSavedMovies("watchlist");
-            movie = watchlist.find(m => String(m.id) === String(movieId));
-        }
-        if (!movie) {
-            const favourites = getSavedMovies("favourites");
-            movie = favourites.find(m => String(m.id) === String(movieId));
-        }
-
-        if (movie) {
-            // Save the selected movie object to localStorage
-            localStorage.setItem("selectedMovie", JSON.stringify(movie));
-            
-            // Redirect to your about page
-            window.location.href = "about.html";
-        }
+    if (movie) {
+        localStorage.setItem("selectedMovie", JSON.stringify(movie));
+        window.location.href = "about.html";
     }
 });
 
-// Populate about.html when the DOM loads
+// about.js
+const genresMap = {
+    28: "Action", 12: "Adventure", 35: "Comedy", 80: "Crime",
+    99: "Documentary", 18: "Drama", 14: "Fantasy", 27: "Horror",
+    10402: "Musical", 10749: "Romance", 878: "Sci-Fi", 53: "Thriller"
+};
+
 document.addEventListener("DOMContentLoaded", () => {
-    const movieJson = localStorage.getItem("selectedMovie");
-    
-    if (!movieJson) {
-        console.warn("No movie selected.");
+    const movieData = JSON.parse(localStorage.getItem("selectedMovie"));
+    const container = document.getElementById("movie-details");
+
+    if (!container) return;
+
+    if (!movieData) {
+        container.innerHTML = `<div class="p-4 text-center"><h3>No movie selected. <a href="index.html">Go back</a></h3></div>`;
         return;
     }
 
-    const movie = JSON.parse(movieJson);
+    container.querySelector(".movie-poster").src = movieData.poster_path 
+        ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` 
+        : "";
+    
+    container.querySelector(".movie-title").textContent = movieData.title || "Untitled";
+    container.querySelector(".movie-date").textContent = movieData.release_date || "";
+    container.querySelector(".movie-rating").textContent = movieData.vote_average ? movieData.vote_average.toFixed(1) : "N/A";
+    container.querySelector(".movie-overview").textContent = movieData.overview || "No description available.";
 
-    // Grab your HTML elements on about.html (matching your HTML structure)
-    const posterImg = document.getElementById("aboutPoster");
-    const titleEl = document.getElementById("aboutTitle");
-    const releaseEl = document.getElementById("aboutReleaseDate");
-    const ratingEl = document.getElementById("aboutRating");
-    const overviewEl = document.getElementById("aboutOverview");
-
-    // Populate the elements with the movie data safely
-    if (posterImg && movie.poster_path) {
-        posterImg.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-        posterImg.alt = movie.title || "Movie Poster";
-    }
-
-    if (titleEl) {
-        titleEl.textContent = movie.title || "Untitled"; // Fixed syntax error here
-    }
-
-    if (releaseEl) {
-        releaseEl.textContent = `Release Date: ${movie.release_date || "N/A"}`;
-    }
-
-    if (ratingEl) {
-        ratingEl.textContent = `Rating: ${movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}`;
-    }
-
-    if (overviewEl) {
-        overviewEl.textContent = movie.overview || "No overview available.";
+    const genresEl = container.querySelector(".movie-genres");
+    if (genresEl && movieData.genre_ids && Array.isArray(movieData.genre_ids)) {
+        genresEl.innerHTML = movieData.genre_ids.map(id => {
+            const name = genresMap[id] || "Genre";
+            return `<span class="badge bg-secondary me-1">${name}</span>`;
+        }).join("");
     }
 });
+
 
 // LUCA
 
