@@ -128,7 +128,7 @@ removeMovieFromList(movie.id, listName); });
  row.appendChild(col);});
 
 containerElement.appendChild(row );
-};
+}
 
 
 
