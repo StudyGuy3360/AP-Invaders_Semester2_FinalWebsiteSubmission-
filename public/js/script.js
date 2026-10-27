@@ -10,6 +10,7 @@ class Movie{
 // DANIELLE
 // ==========================================
 
+
 const watchlistBtn = document.getElementById("watchlistBtn");
 const favouritesBtn = document.getElementById("favouritesBtn");
 const watchlistPage = document.getElementById("watchlistPage");
@@ -121,7 +122,7 @@ col.className = "col-6 col-sm-6 col-md-3 col-lg-2";
 
 <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top rounded shadow"">
 
-<h6 class="text-white text-truncate">${movie.title || "Untitled"}</h6>
+<h6 class="text-white text-center">${movie.title || "Untitled"}</h6>
 
 <button class="btn btn-sm custom-remove-btn remove-btn w-100" type="button" data-id="${movie.id}">Remove</button>
 
