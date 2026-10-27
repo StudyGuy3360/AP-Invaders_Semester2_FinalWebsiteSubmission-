@@ -1,8 +1,8 @@
 References/Sources Used
 
 The following sources were used for learning and guidance purposes during the development of this project. All code was implemented and adapted.
-During the development of this project, we used a mix of tutorials, documentation and examples to help me understand 
-different concepts such as modals, Bootstrap components, DOM events and building a simple cart system in JavaScript
+During the development of this project, we used a mix of tutorials, documentation and examples to help our understand 
+different concepts.
 The following sources were used for learning and guidance purposes:
 
 
@@ -29,7 +29,7 @@ https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Ne
 https://developer.themoviedb.org/docs/image-basics (API)
 https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch (API)
 
-CODEPEN FOR WATCHLIST
+CODEPEN FOR WATCHLIST/FAVOURITS
 Were used for learning and guidance purposes.
 
 https://codepen.io/vincenzopiromalli/pen/OJNyeKN
