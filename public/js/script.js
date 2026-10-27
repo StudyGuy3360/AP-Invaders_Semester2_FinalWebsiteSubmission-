@@ -58,7 +58,8 @@ saveMovies(listName, savedMovies );
 if (listName === "watchlist") {
 alert("Added to your Watchlist!");
 } else {
-alert("Added to your Favourites!");};}
+alert("Added to your Favourites!");
+};}
 
 
 
@@ -73,7 +74,8 @@ containerElement = watchlistPage;
 } else {
         containerElement = favouritesPage;}
 
- renderSavedList( listName, containerElement);}
+ renderSavedList( listName, containerElement);
+}
 
 
 
@@ -97,7 +99,8 @@ const movies = getSavedMovies(listName );
  Your ${listTitle} is empty. Add movies from the library.
  </p>
 </div>`;
-return; }
+return; 
+}
 
 const row = document.createElement("div" );
 row.className = "row g-4 px-4 my-2";
@@ -124,7 +127,8 @@ removeMovieFromList(movie.id, listName); });
 
  row.appendChild(col);});
 
-containerElement.appendChild(row  );}
+containerElement.appendChild(row );
+};
 
 
 
