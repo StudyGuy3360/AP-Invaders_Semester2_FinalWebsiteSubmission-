@@ -9,23 +9,21 @@ class Movie{
 
 //watchlist//
 
-const watchlistBtn = document.getElementById("watchlistBtn");
-const favouritesBtn = document.getElementById("favouritesBtn");
+const watchlistBtn = document.getElementById("watchlistBtn" );
+ const favouritesBtn = document.getElementById("favouritesBtn");
 const watchlistPage = document.getElementById("watchlistPage");
 const favouritesPage = document.getElementById("favouritesPage");
 const pageTitle = document.getElementById("pageTitle");
 
 
-function getSavedMovies(listName) {
-const saved = JSON.parse(localStorage.getItem(listName));
+function getSavedMovies( listName) {
+const saved = JSON.parse(localStorage.getItem( listName));
 if (Array.isArray(saved)) {
 return saved;
-} else {
-return [];
-}}
+} else {return [];}}
 
 
-function saveMovies(listName, movies) {
+function saveMovies( listName, movies) {
 localStorage.setItem(listName, JSON.stringify(movies));}
 
 
@@ -34,20 +32,19 @@ localStorage.setItem(listName, JSON.stringify(movies));}
 function addMovieToList(movie, listName) 
 {if (!movie || movie.id == null) return;
     
-const savedMovies = getSavedMovies(listName);
-const alreadyExists = savedMovies.some(saved => String(saved.id) === String(movie.id));
+const savedMovies = getSavedMovies(listName );
+const alreadyExists = savedMovies.some(saved => String( saved.id) === String( movie.id ));
 
 
 
-if (alreadyExists) 
-{if (listName === "watchlist") {
+if (alreadyExists ) 
+{if (listName === "watchlist" ) {
 alert("This movie is already in your Watchlist");} else {
  alert("This movie is already in your Favourites");}
- return;}
+return;}
 
 
-savedMovies.push({
-id: movie.id,
+savedMovies.push({id: movie.id,
  title: movie.title,
 poster_path: movie.poster_path,
  vote_average: movie.vote_average,
@@ -57,46 +54,42 @@ overview: movie.overview});
 
 
 
-saveMovies(listName, savedMovies);
+saveMovies(listName, savedMovies );
 if (listName === "watchlist") {
 alert("Added to your Watchlist!");
 } else {
-alert("Added to your Favourites!");
-};}
+alert("Added to your Favourites!");};}
 
 
 
-function removeMovieFromList(movieId, listName) {
+function removeMovieFromList(movieId, listName ) {
 const movies = getSavedMovies(listName);
-const updated = movies.filter(movie => String(movie.id) !== String(movieId));
+const updated = movies.filter(movie => String(movie.id ) !== String( movieId));
  saveMovies(listName, updated);
 
 let containerElement;
 if (listName === "watchlist") {
 containerElement = watchlistPage;
 } else {
-        containerElement = favouritesPage;
-    }
+        containerElement = favouritesPage;}
 
- renderSavedList(listName, containerElement);
-}
+ renderSavedList( listName, containerElement);}
 
 
 
 
-function renderSavedList(listName, containerElement) 
-{if (!containerElement) return;
+function renderSavedList( listName, containerElement) 
+{if (!containerElement ) return;
     
 containerElement.innerHTML = "";
-const movies = getSavedMovies(listName);
+const movies = getSavedMovies(listName );
 
  if (movies.length === 0) {
  let listTitle;
  if (listName === "watchlist") {
  listTitle = "Watchlist";
  } else {
- listTitle = "Favourites";
- }
+ listTitle = "Favourites";}
 
  containerElement.innerHTML = `
 <div class="p-4 text-center">
@@ -104,10 +97,9 @@ const movies = getSavedMovies(listName);
  Your ${listTitle} is empty. Add movies from the library.
  </p>
 </div>`;
-return;
-    }
+return; }
 
-const row = document.createElement("div");
+const row = document.createElement("div" );
 row.className = "row g-4 px-4 my-2";
 
 movies.forEach(movie => {
@@ -121,103 +113,95 @@ col.className = "col-6 col-sm-6 col-md-3 col-lg-2";
 <h6 class="text-white text-center">${movie.title || "Untitled"}</h6>
 
 <button class="btn btn-sm custom-remove-btn remove-btn w-100" type="button" data-id="${movie.id}">Remove</button>
-
 </div>
 </div>`;
 
 
 
 
-col.querySelector(".remove-btn").addEventListener("click", () => {
+col.querySelector(".remove-btn" ).addEventListener("click", () => {
 removeMovieFromList(movie.id, listName); });
 
  row.appendChild(col);});
 
-containerElement.appendChild(row);}
+containerElement.appendChild(row  );}
 
 
 
 
-document.addEventListener("click", (event) => {
+document.addEventListener("click", (event ) => {
 const watchlistBtnTarget = event.target.closest(".watchlistBtn");
-const favouriteBtnTarget = event.target.closest(".favouriteBtn");
+    const favouriteBtnTarget = event.target.closest(".favouriteBtn");
 
 
 
 if (watchlistBtnTarget) {
 const movieId = watchlistBtnTarget.dataset.movieId;
-const movie = apiMovies.find(movie => String(movie.id) === String(movieId));
+const movie = apiMovies.find(movie => String(movie.id ) === String(movieId));
  if (movie) {
  addMovieToList(movie, "watchlist");}}
 
 
 
-if (favouriteBtnTarget) {
+if (favouriteBtnTarget  ) {
 const movieId = favouriteBtnTarget.dataset.movieId;
 const movie = apiMovies.find(movie => String(movie.id) === String(movieId));
 if (movie) {
- addMovieToList(movie, "favourites"); }}
-});
+ addMovieToList(movie, "favourites"); }}});
 
 
 
-if (watchlistBtn && watchlistPage) {
+if (watchlistBtn &&  watchlistPage ) {
 watchlistBtn.addEventListener("click", function() {
  watchlistPage.style.display = "block";
 if (favouritesPage) favouritesPage.style.display = "none";
 if (pageTitle) pageTitle.textContent = "My Watchlist";
 document.body.className = "watchlistBody";
- renderSavedList("watchlist", watchlistPage);
-    });
-}
+ renderSavedList( "watchlist", watchlistPage); });}
 
 
 
-if (favouritesBtn && favouritesPage) {
+if ( favouritesBtn && favouritesPage ) {
 favouritesBtn.addEventListener("click", function() {
- if (watchlistPage) watchlistPage.style.display = "none";
+if (watchlistPage ) watchlistPage.style.display = "none";
  favouritesPage.style.display = "block";
- if (pageTitle) pageTitle.textContent = "My Favorites";
+if (pageTitle ) pageTitle.textContent = "My Favorites";;
  document.body.className = "favouritesBody";
-renderSavedList("favourites", favouritesPage);
-    });
+renderSavedList( "favourites", favouritesPage); });
 }
 
 
 
 
-if (watchlistPage) {
- renderSavedList("watchlist", watchlistPage);
+if (watchlistPage ) {
+ renderSavedList("watchlist", watchlistPage );
 }
 !async function(){
 
-const options = {
-  method: 'GET',
-  headers: {accept: 'application/json',  Authorization: 'Bearer  eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNDM2YjBmZDlhNjJiZTI2MDUxMTI2MDA2NmM0ZWIzYiIsIm5iZiI6MTc5MjEzODE4NC4xNTUsInN1YiI6IjZhZDFkYmM4ZGI0YmYxMmI2MmIzZTc5ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mLj37yAOQSPUr6bmuhkc_T1XO0z1fGPEkcOrl6fizTc'}
-};
+const options = {method: 'GET',
+headers: {accept: 'application/json',  Authorization: 'Bearer  eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNDM2YjBmZDlhNjJiZTI2MDUxMTI2MDA2NmM0ZWIzYiIsIm5iZiI6MTc5MjEzODE4NC4xNTUsInN1YiI6IjZhZDFkYmM4ZGI0YmYxMmI2MmIzZTc5ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mLj37yAOQSPUr6bmuhkc_T1XO0z1fGPEkcOrl6fizTc'}};
 
 
- let data = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
+ let data = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options )
  .then(res => res.json())
  .then(result => {return result})
 .catch(err => console.error(err));
 
-
- for (let page = 2; page <= 5; page++) {
-let moreData = await fetch( `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,
-        options
+for (let page = 2; page <= 5; page++) {
+let moreData = await fetch( `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,options
 ).then(res => res.json());
 
 
-data.results.push(...moreData.results);
-  }
+data.results.push(...moreData.results);}
 
 
 console.log(data);
-console.log(data.results[0].title);
+
+console.log(data.results[0].title);;
 apiMovies = data.results;
-console.log("Total movies:", apiMovies.length);
-renderAllMovies(apiMovies);
+
+console.log("Total movies:", apiMovies.length  );
+renderAllMovies(apiMovies );
 
   //Search on ContLib
     const searchForm = document.getElementById("movieSearchForm");
