@@ -310,6 +310,7 @@ function renderAllMovies(movies) {
         const cardHtml = `
             <div class="col-6 col-sm-6 col-md-3 col-lg-2">
                 <div class="h-100 shadow" moviePoster>
+                <div class="h-100 shadow moviePoster" data-movie-id="${movie.id}" style="cursor: pointer;">
                     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top rounded" alt="${movie.title}">
                     <div class="movieActions">
                         <button class="movieActionBtn watchlistBtn" type="button" data-movie-id="${movie.id}" aria-label="Add to Watchlist">
