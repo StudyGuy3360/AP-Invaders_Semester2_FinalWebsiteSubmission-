@@ -234,6 +234,21 @@ renderAllMovies(apiMovies);
     const searchForm = document.getElementById("movieSearchForm");
     const searchInput = document.getElementById("movieSearchInput");
 
+    searchInput.addEventListener("input", function() {
+
+    if (searchInput.value.trim() === "") {
+        document.querySelectorAll(".contLibFilterButton").forEach(button => {
+            button.classList.remove("active");
+        });
+
+        document.querySelector(
+            '.contLibFilterButton[data-target="allMoviesSection"]'
+        ).classList.add("active");
+
+        renderAllMovies(apiMovies);
+    }
+});
+
     searchForm.addEventListener("submit", async function(event) {
         event.preventDefault();
 
