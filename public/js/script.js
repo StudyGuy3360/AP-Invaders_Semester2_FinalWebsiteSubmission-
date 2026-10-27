@@ -182,6 +182,8 @@ if (watchlistPage ) {
 }
 //watchlist end//
 
+
+
 !async function(){
 
 const options = {method: 'GET',

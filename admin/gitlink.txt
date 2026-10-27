@@ -24,6 +24,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset (DATASET)
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals  (TEMPLATE LITERALS)
 https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Event_bubbling
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function (async function)
+https://www.youtube.com/watch?v=SPz5ILVTvjo (DATASET)
 https://www.youtube.com/watch?v=ubw2hdQIl4E (API)
 https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Network_requests (API)
 https://developer.themoviedb.org/docs/image-basics (API)
