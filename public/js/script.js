@@ -180,6 +180,8 @@ renderSavedList( "favourites", favouritesPage); });
 if (watchlistPage ) {
  renderSavedList("watchlist", watchlistPage );
 }
+//watchlist end//
+
 !async function(){
 
 const options = {method: 'GET',
