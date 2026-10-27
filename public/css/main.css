@@ -173,6 +173,10 @@ margin: 0;
 
 
 .custom-remove-btn {
+ text-align: center;
+ display: flex;
+ justify-content: center;
+ align-items: center;
 color: #ffffff;        
 border: 1px solid #ff4d4d;
 background-color: #ff4d4d; 
@@ -181,6 +185,10 @@ background-color: #ff4d4d;
 
 
 .custom-remove-btn:hover {
+ text-align: center;
+   justify-content: center;
+align-items: center;
+display: flex;
  background-color: #cc0000;
 border-color: #cc0000;
 color: #ffffff;
