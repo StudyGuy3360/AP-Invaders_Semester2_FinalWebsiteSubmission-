@@ -601,6 +601,7 @@ if (loginBtn && loginForm && loginText) {
     });
 }
 
+
 if (signupLink && signupBtn) {
     signupLink.onclick = (() => {
         signupBtn.click();
