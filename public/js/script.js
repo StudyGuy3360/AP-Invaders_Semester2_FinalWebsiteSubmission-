@@ -417,7 +417,7 @@ data.results.push(...moreData.results);}
 console.log(data);
 
 console.log(data.results[0].title);;
-apiMovies = data.results;
+apiMovies = data.results.concat(apiMovies.filter(m => !data.results.some(r => r.id === m.id)));
 
 console.log("Total movies:", apiMovies.length  );
 renderAllMovies(apiMovies );
@@ -738,10 +738,6 @@ if (aboutTitle) {
         document.getElementById("aboutOverview").textContent =
             movieData.overview || "No description available.";
 
-        // placeholders until the extra details load
-        document.getElementById("aboutGenre").textContent = "Genres: Loading...";
-        document.getElementById("aboutDirector").textContent = "Director: Loading...";
-
         loadExtraDetails(movieData.id);
     }
 }
@@ -781,8 +777,12 @@ async function loadExtraDetails(movieId) {
         }
 
 
-        document.getElementById("aboutReleaseDate").textContent =
+           document.getElementById("aboutReleaseDate").textContent =
             "Release Date: " + (details.release_date || "N/A") + "  |  Age Rating: " + ageRating;
+
+   
+        loadSameGenreMovies(details.genres, movieId, detailOptions);
+
 
     } catch (error) {
         console.error("Error loading movie details:", error);
@@ -790,6 +790,61 @@ async function loadExtraDetails(movieId) {
         document.getElementById("aboutDirector").textContent = "Director: N/A";
     }
 }
+
+
+// carousel
+
+
+async function loadSameGenreMovies(genreList, currentMovieId, requestOptions) {
+    const carouselArea = document.getElementById("sameGenreCarousel");
+
+
+    if (!carouselArea || genreList.length === 0) return;
+
+
+    const mainGenre = genreList[0];
+
+    try {
+
+        const response = await fetch(
+            `https://api.themoviedb.org/3/discover/movie?with_genres=${mainGenre.id}&sort_by=popularity.desc&language=en-US&page=1`,
+            requestOptions
+        );
+        if (!response.ok) throw new Error("Genre request failed");
+        const result = await response.json();
+
+
+        const sameGenreMovies = result.results.filter(movie =>
+            movie.poster_path && String(movie.id) !== String(currentMovieId)
+        );
+
+
+        sameGenreMovies.forEach(movie => {
+            const alreadyThere = apiMovies.some(saved => String(saved.id) === String(movie.id));
+            if (!alreadyThere) apiMovies.push(movie);
+        });
+
+
+        carouselArea.innerHTML = createCarousel(
+            `More ${mainGenre.name} Movies`,
+            "sameGenreMovies",
+            sameGenreMovies,
+            true
+        );
+
+
+        setupCarouselArrows();
+
+    } catch (error) {
+        console.error("Error loading same-genre movies:", error);
+    }
+}
+
+
+
+
+
+
 
 // LUCA
 
