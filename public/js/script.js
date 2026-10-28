@@ -111,7 +111,7 @@ col.className = "col-6 col-sm-6 col-md-3 col-lg-2";
 
        
  col.innerHTML = `
-<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top rounded shadow"">
+<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top rounded shadow movie-img" data-movie-id="${movie.id}" style="cursor: pointer;">
 
 <h6 class="text-white text-center">${movie.title || "Untitled"}</h6>
 
@@ -267,42 +267,45 @@ renderAllMovies(apiMovies );
 
 //Content Library JS
 let apiMovies = [];
-
 const container = document.getElementById('movieGridContainer');
 
-document.querySelectorAll('.contLibFilterButton').forEach(button => {
-    button.addEventListener('click', () => {
+if (container) {
+    document.querySelectorAll('.contLibFilterButton').forEach(button => {
+        button.addEventListener('click', () => {
+            document.querySelectorAll('.contLibFilterButton').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            button.classList.add('active');
+            
+            const targetView = button.getAttribute('data-target');
+            container.innerHTML = '';
 
-        document.querySelectorAll('.contLibFilterButton').forEach(btn => {
-            btn.classList.remove('active');
+            if (targetView === "allMoviesSection") {
+                renderAllMovies(apiMovies);
+            } else if (targetView === "genresSection") {
+                renderGenres();
+            } else if (targetView === "releaseDateSection") {
+                renderReleaseDate();
+            } else if (targetView === "contentRatingSection") {
+                renderAudienceRating();
+            }
         });
-
-        button.classList.add('active');
-        
-        const targetView = button.getAttribute('data-target');
-
-        container.innerHTML = '';
-
-        if (targetView === "allMoviesSection") {
-            renderAllMovies(apiMovies);
-        } else if (targetView === "genresSection") {
-            renderGenres();
-        } else if (targetView === "releaseDateSection") {
-            renderReleaseDate();
-        } else if (targetView === "contentRatingSection") {
-            renderAudienceRating();
-        }
     });
-});
+
+    const activeBtn = document.querySelector('.contLibFilterButton[data-target="allMoviesSection"]');
+    if (activeBtn) activeBtn.classList.add('active');
+}
 
 function renderAllMovies(movies) {
+    if (!container) return; 
+
     container.innerHTML = "";
 
     movies.forEach(movie => {
         const cardHtml = `
             <div class="col-6 col-sm-6 col-md-3 col-lg-2">
                 <div class="h-100 shadow moviePoster">
-                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top rounded" alt="${movie.title}">
+                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top rounded shadow movie-img" data-movie-id="${movie.id}" style="cursor: pointer;">
                     <div class="movieActions">
                         <button class="movieActionBtn watchlistBtn" type="button" data-movie-id="${movie.id}" aria-label="Add to Watchlist">
                             <i class="fa-solid fa-plus"></i>
@@ -354,19 +357,8 @@ function createCarousel(title, id, movies, showRating = false) {
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h4 class="genreTitle">${title}</h4>
                 <div>
-                    <button class="btn btn-sm carouselArrow"
-                            type="button"
-                            data-scroll="prev"
-                            data-carousel="${id}">
-                        &#10094;
-                    </button>
-
-                    <button class="btn btn-sm carouselArrow"
-                            type="button"
-                            data-scroll="next"
-                            data-carousel="${id}">
-                        &#10095;
-                    </button>
+                    <button class="btn btn-sm carouselArrow" type="button" data-scroll="prev" data-carousel="${id}">&#10094;</button>
+                    <button class="btn btn-sm carouselArrow" type="button" data-scroll="next" data-carousel="${id}">&#10095;</button>
                 </div>
             </div>
 
@@ -374,7 +366,13 @@ function createCarousel(title, id, movies, showRating = false) {
                 ${movies.map(movie => `
                     <div class="movieCarouselItem">
                         <div class="moviePoster">
-                            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+
+<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" 
+     class="card-img-top rounded shadow movie-img" 
+     data-movie-id="${movie.id}" 
+     alt="${movie.title}" 
+     style="cursor: pointer;">
+                            
                             <div class="movieActions">
                                 <button class="movieActionBtn watchlistBtn" type="button" data-movie-id="${movie.id}" aria-label="Add to Watchlist">
                                     <i class="fa-solid fa-plus"></i>
@@ -468,107 +466,147 @@ function setupCarouselArrows() {
     });
 }
 
-document.querySelector(
-    '.contLibFilterButton[data-target="allMoviesSection"]'
-).classList.add('active');
 
 
-// Individual api// 2nd test version
-// posterClick.js
+
+// ip
+
+// click
 document.addEventListener("click", (event) => {
-    const img = event.target.closest("img");
-    if (!img || event.target.closest("button")) return;
+    const posterTarget = event.target.closest(".movie-img");
+    if (!posterTarget) return;
 
-    // Find the associated movie ID from nearby elements
-    const container = img.closest(".moviePoster") || img.closest(".col-6") || img.parentElement;
-    const btnWithId = container ? container.querySelector("[data-movie-id], [data-id]") : null;
-    
-    if (!btnWithId) return;
-    const movieId = btnWithId.dataset.movieId || btnWithId.dataset.id;
+    const movieId = posterTarget.dataset.movieId;
+    if (!movieId) return;
 
-    // Search for the movie in apiMovies or saved lists
-    let movie = null;
-    if (typeof apiMovies !== 'undefined') {
-        movie = apiMovies.find(m => String(m.id) === String(movieId));
-    }
+  
+    let movie = typeof apiMovies !== 'undefined' ? apiMovies.find(m => String(m.id) === String(movieId)) : null;
     
     if (!movie) {
-        for (const listName of ["watchlist", "favourites"]) {
-            try {
-                const saved = JSON.parse(localStorage.getItem(listName)) || [];
-                movie = saved.find(m => String(m.id) === String(movieId));
-                if (movie) break;
-            } catch (e) {}
-        }
+        const watchlist = getSavedMovies("watchlist");
+        movie = watchlist.find(m => String(m.id) === String(movieId));
+    }
+    if (!movie) {
+        const favourites = getSavedMovies("favourites");
+        movie = favourites.find(m => String(m.id) === String(movieId));
     }
 
     if (movie) {
         localStorage.setItem("selectedMovie", JSON.stringify(movie));
-        window.location.href = "about.html";
+        
+ 
+        const isInPagesFolder = window.location.pathname.includes('/pages/');
+        window.location.href = isInPagesFolder ? "about.html" : "pages/about.html";
+    } else {
+        console.error("Movie data not found for ID:", movieId);
     }
 });
 
-// about.js
-const genresMap = {
-    28: "Action", 12: "Adventure", 35: "Comedy", 80: "Crime",
-    99: "Documentary", 18: "Drama", 14: "Fantasy", 27: "Horror",
-    10402: "Musical", 10749: "Romance", 878: "Sci-Fi", 53: "Thriller"
-};
+// render
+const aboutTitle = document.getElementById("aboutTitle");
 
-document.addEventListener("DOMContentLoaded", () => {
+if (aboutTitle) {
     const movieData = JSON.parse(localStorage.getItem("selectedMovie"));
-    const container = document.getElementById("movie-details");
-
-    if (!container) return;
 
     if (!movieData) {
-        container.innerHTML = `<div class="p-4 text-center"><h3>No movie selected. <a href="index.html">Go back</a></h3></div>`;
-        return;
+
+        aboutTitle.textContent = "No movie selected";
+    } else {
+
+        document.getElementById("aboutPoster").src = "https://image.tmdb.org/t/p/w500" + movieData.poster_path;
+        document.getElementById("aboutPoster").alt = movieData.title;
+        aboutTitle.textContent = movieData.title || "Untitled";
+        document.getElementById("aboutRating").textContent =
+            "Viewer Rating: " + (movieData.vote_average ? movieData.vote_average.toFixed(1) + " / 10" : "N/A");
+        document.getElementById("aboutReleaseDate").textContent =
+            "Release Date: " + (movieData.release_date || "N/A");
+        document.getElementById("aboutOverview").textContent =
+            movieData.overview || "No description available.";
+
+        // placeholders until the extra details load
+        document.getElementById("aboutGenre").textContent = "Genres: Loading...";
+        document.getElementById("aboutDirector").textContent = "Director: Loading...";
+
+        loadExtraDetails(movieData.id);
     }
+}
 
-    container.querySelector(".movie-poster").src = movieData.poster_path 
-        ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` 
-        : "";
-    
-    container.querySelector(".movie-title").textContent = movieData.title || "Untitled";
-    container.querySelector(".movie-date").textContent = movieData.release_date || "";
-    container.querySelector(".movie-rating").textContent = movieData.vote_average ? movieData.vote_average.toFixed(1) : "N/A";
-    container.querySelector(".movie-overview").textContent = movieData.overview || "No description available.";
 
-    const genresEl = container.querySelector(".movie-genres");
-    if (genresEl && movieData.genre_ids && Array.isArray(movieData.genre_ids)) {
-        genresEl.innerHTML = movieData.genre_ids.map(id => {
-            const name = genresMap[id] || "Genre";
-            return `<span class="badge bg-secondary me-1">${name}</span>`;
-        }).join("");
+async function loadExtraDetails(movieId) {
+
+    const detailOptions = {
+        method: 'GET',
+        headers: { accept: 'application/json', Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNDM2YjBmZDlhNjJiZTI2MDUxMTI2MDA2NmM0ZWIzYiIsIm5iZiI6MTc5MjEzODE4NC4xNTUsInN1YiI6IjZhZDFkYmM4ZGI0YmYxMmI2MmIzZTc5ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mLj37yAOQSPUr6bmuhkc_T1XO0z1fGPEkcOrl6fizTc' }
+    };
+
+    try {
+ 
+        const response = await fetch(
+            `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&append_to_response=credits,release_dates`,
+            detailOptions
+        );
+        if (!response.ok) throw new Error("Details request failed");
+        const details = await response.json();
+
+   
+        const genreNames = details.genres.map(g => g.name).join(", ");
+        document.getElementById("aboutGenre").textContent = "Genres: " + (genreNames || "N/A");
+
+  
+        const director = details.credits.crew.find(person => person.job === "Director");
+        document.getElementById("aboutDirector").textContent =
+            "Director: " + (director ? director.name : "N/A");
+
+  
+        let ageRating = "N/A";
+        const usRelease = details.release_dates.results.find(r => r.iso_3166_1 === "US");
+        if (usRelease) {
+            const cert = usRelease.release_dates.find(r => r.certification !== "");
+            if (cert) ageRating = cert.certification;
+        }
+
+
+        document.getElementById("aboutReleaseDate").textContent =
+            "Release Date: " + (details.release_date || "N/A") + "  |  Age Rating: " + ageRating;
+
+    } catch (error) {
+        console.error("Error loading movie details:", error);
+        document.getElementById("aboutGenre").textContent = "Genres: N/A";
+        document.getElementById("aboutDirector").textContent = "Director: N/A";
     }
-});
-
+}
 
 // LUCA
 
 //Login
+
+
 const loginText = document.querySelector(".title-text.login");
 const loginForm = document.querySelector("form.login");
 const loginBtn = document.querySelector("label.login");
 const signupBtn = document.querySelector("label.signup");
 const signupLink = document.querySelector("form .signup-link a");
-signupBtn.onclick = (() => {
-  loginForm.style.marginLeft = "-50%";
-  loginText.style.marginLeft = "-50%";
-});
-loginBtn.onclick = (() => {
-  loginForm.style.marginLeft = "0%";
-  loginText.style.marginLeft = "0%";
-});
-signupLink.onclick = (() => {
-  signupBtn.click();
-  return false;
-});
 
+if (signupBtn && loginForm && loginText) {
+    signupBtn.onclick = (() => {
+        loginForm.style.marginLeft = "-50%";
+        loginText.style.marginLeft = "-50%";
+    });
+}
 
+if (loginBtn && loginForm && loginText) {
+    loginBtn.onclick = (() => {
+        loginForm.style.marginLeft = "0%";
+        loginText.style.marginLeft = "0%";
+    });
+}
 
-
+if (signupLink && signupBtn) {
+    signupLink.onclick = (() => {
+        signupBtn.click();
+        return false;
+    });
+}
 
 
 
