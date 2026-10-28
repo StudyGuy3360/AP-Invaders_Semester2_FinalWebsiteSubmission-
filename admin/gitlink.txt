@@ -1,3 +1,5 @@
+
+these reference links are no longer in use as i got rid of code for it. {
 PENCODE FOR LOGIN
 https://codepen.io/mr-zouraiz123/pen/ZEeKMVP
 
@@ -6,3 +8,8 @@ https://codepen.io/yudizsolutions/pen/wvzrPoj
 
 code from carousal bootstrap
 https://getbootstrap.com/docs/6.0/components/carousel/
+}
+
+
+home page and api intergration.
+https://www.youtube.com/watch?v=lF2TcUEleps
