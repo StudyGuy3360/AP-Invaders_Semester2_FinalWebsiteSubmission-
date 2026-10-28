@@ -523,10 +523,6 @@ if (aboutTitle) {
         document.getElementById("aboutOverview").textContent =
             movieData.overview || "No description available.";
 
-        // placeholders until the extra details load
-        document.getElementById("aboutGenre").textContent = "Genres: Loading...";
-        document.getElementById("aboutDirector").textContent = "Director: Loading...";
-
         loadExtraDetails(movieData.id);
     }
 }

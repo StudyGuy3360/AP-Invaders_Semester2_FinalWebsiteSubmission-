@@ -1,3 +1,58 @@
+References/Sources Used
+
+The following sources were used for learning and guidance purposes during the development of this project. All code was implemented and adapted.
+During the development of this project, we used a mix of tutorials, documentation and examples to help our understand 
+different concepts.
+The following sources were used for learning and guidance purposes:
+
+
+WATCHLIST/FAVOURITS
+
+https://getbootstrap.com/docs/5.3/getting-started/javascript/ (BOOTSTRAP JAVASCRIPT)
+https://www.youtube.com/watch?v=Urwzk6ILvPQ(Array Iteration)
+https://www.youtube.com/watch?v=AUOzvFzdIk4(Storing Objects with Local Storage in JavaScript)
+https://www.youtube.com/watch?v=Oy185MF8pnY(How to use Arrow Functions)
+https://developer.mozilla.org/en-US/docs/Web/API/Element/closest (closest)
+https://www.youtube.com/watch?v=6eFwtaZf6zc (Localstorage/delete button)
+https://www.youtube.com/watch?v=99-5wgxZceM(Vanilla Javascript and TMDB API With Search Feature)
+https://www.youtube.com/watch?v=hP0Rl5euD_o (Array forEach Method in JavaScript)
+https://www.youtube.com/watch?v=VW8kNAous88 (Document.createElement() - Javascript DOM)
+https://www.youtube.com/watch?v=D7sNpAiNMQM (querySelectorAll method in JavaScript)
+https://www.youtube.com/watch?v=RbfG7NLKDgQ (How To Store A JavaScript Array in Local Storage)
+https://getbootstrap.com/docs/6.0/getting-started/install/(BOOTSTRAP)
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset (DATASET)
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals  (TEMPLATE LITERALS)
+https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Event_bubbling
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function (async function)
+https://www.youtube.com/watch?v=SPz5ILVTvjo (DATASET)
+https://www.youtube.com/watch?v=ubw2hdQIl4E (API)
+https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Network_requests (API)
+https://developer.themoviedb.org/docs/image-basics (API)
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch (API)
+
+CODEPEN FOR WATCHLIST/FAVOURITS
+Were used for learning and guidance purposes.
+
+https://codepen.io/vincenzopiromalli/pen/OJNyeKN
+https://codepen.io/Dextro101/pen/xxjJOGQ
+https://codepen.io/bgokjh/pen/wbRLNr
+https://codepen.io/Ethan_P2006/pen/MYyEpxR
+https://codepen.io/nillakash24/pen/XWRpzKr
+https://codepen.io/editor/Keenan-Ace/pen/01a0ee7e-3220-7909-9ab2-ac0ce4229423
+
+
+PENCODE FOR LOGIN
+
+https://codepen.io/mr-zouraiz123/pen/ZEeKMVP
+
+code from Codepen for trending now page
+https://codepen.io/yudizsolutions/pen/wvzrPoj
+
+code from carousal bootstrap
+https://getbootstrap.com/docs/6.0/components/carousel/
+
+
+
 PENCODE FOR LOGIN
 https://codepen.io/mr-zouraiz123/pen/ZEeKMVP
 
@@ -6,3 +61,6 @@ https://codepen.io/yudizsolutions/pen/wvzrPoj
 
 code from carousal bootstrap
 https://getbootstrap.com/docs/6.0/components/carousel/
+
+Code Pen for indiv page
+https://codepen.io/Artixx25/pen/gOZmged
