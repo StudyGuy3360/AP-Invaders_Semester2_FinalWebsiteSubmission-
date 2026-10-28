@@ -1,3 +1,5 @@
+https://github.com/StudyGuy3360/AP-Invaders_Semester2_FinalWebsiteSubmission-
+
 References/Sources Used
 
 The following sources were used for learning and guidance purposes during the development of this project. All code was implemented and adapted.
@@ -61,5 +63,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try
 
 
 
-home page api integration
+
+home page and api intergration.
 https://www.youtube.com/watch?v=lF2TcUEleps
+
+General Homepage layout 
+https://www.youtube.com/watch?v=AOlkcLtyXkw
+
+General Homepage layout+Responsiveness
+https://www.youtube.com/watch?v=NU6BqU67Lv8&list=PLnICNFdxWbz6fo0vPGQl6bTNVmJbkZgM1
