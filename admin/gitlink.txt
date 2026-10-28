@@ -13,3 +13,9 @@ https://getbootstrap.com/docs/6.0/components/carousel/
 
 home page and api intergration.
 https://www.youtube.com/watch?v=lF2TcUEleps
+
+General Homepage layout 
+https://www.youtube.com/watch?v=AOlkcLtyXkw
+
+General Homepage layout+Responsiveness
+https://www.youtube.com/watch?v=NU6BqU67Lv8&list=PLnICNFdxWbz6fo0vPGQl6bTNVmJbkZgM1
