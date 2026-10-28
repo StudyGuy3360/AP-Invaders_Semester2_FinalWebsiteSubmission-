@@ -7,40 +7,224 @@ class Movie{
   }
 }
 
+//watchlist//
+
+const watchlistBtn = document.getElementById("watchlistBtn" );
+ const favouritesBtn = document.getElementById("favouritesBtn");
+const watchlistPage = document.getElementById("watchlistPage");
+const favouritesPage = document.getElementById("favouritesPage");
+const pageTitle = document.getElementById("pageTitle");
+
+
+function getSavedMovies( listName) {
+const saved = JSON.parse(localStorage.getItem( listName));
+if (Array.isArray(saved)) {
+return saved;
+} else {return [];}}
+
+
+function saveMovies( listName, movies) {
+localStorage.setItem(listName, JSON.stringify(movies));}
+
+
+
+
+function addMovieToList(movie, listName) 
+{if (!movie || movie.id == null) return;
+    
+const savedMovies = getSavedMovies(listName );
+const alreadyExists = savedMovies.some(saved => String( saved.id) === String( movie.id ));
+
+
+
+if (alreadyExists ) 
+{if (listName === "watchlist" ) {
+alert("This movie is already in your Watchlist");} else {
+ alert("This movie is already in your Favourites");}
+return;}
+
+
+savedMovies.push({id: movie.id,
+ title: movie.title,
+poster_path: movie.poster_path,
+ vote_average: movie.vote_average,
+release_date: movie.release_date,
+overview: movie.overview});
+
+
+
+
+saveMovies(listName, savedMovies );
+if (listName === "watchlist") {
+alert("Added to your Watchlist!");
+} else {
+alert("Added to your Favourites!");
+};}
+
+
+
+function removeMovieFromList(movieId, listName ) {
+const movies = getSavedMovies(listName);
+const updated = movies.filter(movie => String(movie.id ) !== String( movieId));
+ saveMovies(listName, updated);
+
+let containerElement;
+if (listName === "watchlist") {
+containerElement = watchlistPage;
+} else {
+        containerElement = favouritesPage;}
+
+ renderSavedList( listName, containerElement);
+}
+
+
+
+
+function renderSavedList( listName, containerElement) 
+{if (!containerElement ) return;
+    
+containerElement.innerHTML = "";
+const movies = getSavedMovies(listName );
+
+ if (movies.length === 0) {
+ let listTitle;
+ if (listName === "watchlist") {
+ listTitle = "Watchlist";
+ } else {
+ listTitle = "Favourites";}
+
+ containerElement.innerHTML = `
+<div class="p-4 text-center">
+<p class="text-white">
+ Your ${listTitle} is empty. Add movies from the library.
+ </p>
+</div>`;
+return; 
+}
+
+const row = document.createElement("div" );
+row.className = "row g-4 px-4 my-2";
+
+movies.forEach(movie => {
+const col = document.createElement("div");
+col.className = "col-6 col-sm-6 col-md-3 col-lg-2";
+
+       
+ col.innerHTML = `
+<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top rounded shadow"">
+
+<h6 class="text-white text-center">${movie.title || "Untitled"}</h6>
+
+<button class="btn btn-sm custom-remove-btn remove-btn w-100" type="button" data-id="${movie.id}">Remove</button>
+</div>
+</div>`;
+
+
+
+
+col.querySelector(".remove-btn" ).addEventListener("click", () => {
+removeMovieFromList(movie.id, listName); });
+
+ row.appendChild(col);});
+
+containerElement.appendChild(row );
+}
+
+
+
+
+document.addEventListener("click", (event ) => {
+const watchlistBtnTarget = event.target.closest(".watchlistBtn");
+    const favouriteBtnTarget = event.target.closest(".favouriteBtn");
+
+
+
+if (watchlistBtnTarget) {
+const movieId = watchlistBtnTarget.dataset.movieId;
+const movie = apiMovies.find(movie => String(movie.id ) === String(movieId));
+ if (movie) {
+ addMovieToList(movie, "watchlist");}}
+
+
+
+if (favouriteBtnTarget  ) {
+const movieId = favouriteBtnTarget.dataset.movieId;
+const movie = apiMovies.find(movie => String(movie.id) === String(movieId));
+if (movie) {
+ addMovieToList(movie, "favourites"); }}});
+
+
+
+if (watchlistBtn &&  watchlistPage ) {
+watchlistBtn.addEventListener("click", function() {
+ watchlistPage.style.display = "block";
+if (favouritesPage) favouritesPage.style.display = "none";
+if (pageTitle) pageTitle.textContent = "My Watchlist";
+document.body.className = "watchlistBody";
+ renderSavedList( "watchlist", watchlistPage); });}
+
+
+
+if ( favouritesBtn && favouritesPage ) {
+favouritesBtn.addEventListener("click", function() {
+if (watchlistPage ) watchlistPage.style.display = "none";
+ favouritesPage.style.display = "block";
+if (pageTitle ) pageTitle.textContent = "My Favorites";;
+ document.body.className = "favouritesBody";
+renderSavedList( "favourites", favouritesPage); });
+}
+
+
+
+
+if (watchlistPage ) {
+ renderSavedList("watchlist", watchlistPage );
+}
 !async function(){
 
-const options = {
-  method: 'GET',
-  headers: {accept: 'application/json',  Authorization: 'Bearer  eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNDM2YjBmZDlhNjJiZTI2MDUxMTI2MDA2NmM0ZWIzYiIsIm5iZiI6MTc5MjEzODE4NC4xNTUsInN1YiI6IjZhZDFkYmM4ZGI0YmYxMmI2MmIzZTc5ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mLj37yAOQSPUr6bmuhkc_T1XO0z1fGPEkcOrl6fizTc'}
-};
+const options = {method: 'GET',
+headers: {accept: 'application/json',  Authorization: 'Bearer  eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNDM2YjBmZDlhNjJiZTI2MDUxMTI2MDA2NmM0ZWIzYiIsIm5iZiI6MTc5MjEzODE4NC4xNTUsInN1YiI6IjZhZDFkYmM4ZGI0YmYxMmI2MmIzZTc5ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mLj37yAOQSPUr6bmuhkc_T1XO0z1fGPEkcOrl6fizTc'}};
 
- let data = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
-            .then(res => res.json())
-            .then(result => {return result})
-            .catch(err => console.error(err));
 
-  for (let page = 2; page <= 5; page++) {
-    let moreData = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,
-        options
-    ).then(res => res.json());
+ let data = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options )
+ .then(res => res.json())
+ .then(result => {return result})
+.catch(err => console.error(err));
 
-    data.results.push(...moreData.results);
-  }
+for (let page = 2; page <= 5; page++) {
+let moreData = await fetch( `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,options
+).then(res => res.json());
 
-  console.log(data);
 
-  console.log(data.results[0].title);
+data.results.push(...moreData.results);}
 
-  apiMovies = data.results;
 
-  console.log("Total movies:", apiMovies.length);
+console.log(data);
 
-  renderAllMovies(apiMovies);
+console.log(data.results[0].title);;
+apiMovies = data.results;
+
+console.log("Total movies:", apiMovies.length  );
+renderAllMovies(apiMovies );
 
   //Search on ContLib
     const searchForm = document.getElementById("movieSearchForm");
     const searchInput = document.getElementById("movieSearchInput");
+
+    searchInput.addEventListener("input", function() {
+
+    if (searchInput.value.trim() === "") {
+        document.querySelectorAll(".contLibFilterButton").forEach(button => {
+            button.classList.remove("active");
+        });
+
+        document.querySelector(
+            '.contLibFilterButton[data-target="allMoviesSection"]'
+        ).classList.add("active");
+
+        renderAllMovies(apiMovies);
+    }
+});
 
     searchForm.addEventListener("submit", async function(event) {
         event.preventDefault();
@@ -112,17 +296,24 @@ document.querySelectorAll('.contLibFilterButton').forEach(button => {
 });
 
 function renderAllMovies(movies) {
-
     container.innerHTML = "";
 
     movies.forEach(movie => {
         const cardHtml = `
             <div class="col-6 col-sm-6 col-md-3 col-lg-2">
-                <div class="h-100 shadow">
+                <div class="h-100 shadow moviePoster">
                     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top rounded" alt="${movie.title}">
-                </div>
+                    <div class="movieActions">
+                        <button class="movieActionBtn watchlistBtn" type="button" data-movie-id="${movie.id}" aria-label="Add to Watchlist">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <button class="movieActionBtn favouriteBtn" type="button" data-movie-id="${movie.id}" aria-label="Add to Favourites">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>    
             </div>
-        `; //API will probably be inserted here where the <img> is
+        `;
         container.insertAdjacentHTML('beforeend', cardHtml);
     });
 }
@@ -157,7 +348,7 @@ const audienceRatings = [
     { name: "Mixed Reviews", min: 0, max: 6 }
 ];
 
-function createCarousel(title, id, movies) {
+function createCarousel(title, id, movies, showRating = false) {
     return `
         <div class="genreTitle">
             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -180,11 +371,27 @@ function createCarousel(title, id, movies) {
             </div>
 
             <div id="${id}" class="movieCarousel">
-              ${movies.map(movie => `
-                  <div class="movieCarouselItem">
-                      <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-                  </div>
-              `).join("")}
+                ${movies.map(movie => `
+                    <div class="movieCarouselItem">
+                        <div class="moviePoster">
+                            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+                            <div class="movieActions">
+                                <button class="movieActionBtn watchlistBtn" type="button" data-movie-id="${movie.id}" aria-label="Add to Watchlist">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                                <button class="movieActionBtn favouriteBtn" type="button" data-movie-id="${movie.id}" aria-label="Add to Favourites">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                            ${showRating ? `
+                                <div class="movieRating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <span>${movie.vote_average.toFixed(1)}</span>
+                                </div>
+                            ` : ""}
+                        </div>
+                    </div>
+                `).join("")}
             </div>
         </div>
     `;
@@ -239,7 +446,8 @@ function renderAudienceRating() {
         return createCarousel(
             rating.name,
             `${rating.min}RatingCarousel`,
-            ratingMovies
+            ratingMovies, 
+            true
         );
 
     }).join("");
@@ -265,83 +473,120 @@ document.querySelector(
 ).classList.add('active');
 
 
-// Individual api
-document.getElementById('movieGridContainer').addEventListener('click', (e) => {
-    const img = e.target.closest('img');
-    if (!img) return;
+// Individual api// 2nd test version
 
-    const movieId = img.dataset.id;
-    const clickedMovie = apiMovies.find(movie => movie.id == movieId);
 
-    if (clickedMovie) {
-        const IP = document.getElementById('IP');
-        if (IP) {
-            IP.src = `https://image.tmdb.org/t/p/w500${clickedMovie.poster_path}`;
-            IP.alt = clickedMovie.title;
+// ==========================================
+// Individual Movie Click & About Page Handler
+// ==========================================
+
+// Listen for clicks on any movie poster or card image across the app
+document.addEventListener("click", (event) => {
+    // Ignore clicks if the user clicked a button (like Watchlist, Favourite, or Remove)
+    if (
+        event.target.closest(".watchlistBtn") || 
+        event.target.closest(".favouriteBtn") || 
+        event.target.closest(".remove-btn")
+    ) {
+        return;
+    }
+
+    // Check if the clicked element (or its parent) has a movie identifier
+    const movieCard = event.target.closest("[data-movie-id]") || event.target.closest("[data-id]");
+    
+    if (movieCard) {
+        const movieId = movieCard.dataset.movieId || movieCard.dataset.id;
+        
+        // 1. Try finding the movie in the main API movies array
+        let movie = apiMovies.find(m => String(m.id) === String(movieId));
+
+        // 2. Fallback: If not in apiMovies, check local storage (Watchlist / Favourites)
+        if (!movie) {
+            const watchlist = getSavedMovies("watchlist");
+            movie = watchlist.find(m => String(m.id) === String(movieId));
+        }
+        if (!movie) {
+            const favourites = getSavedMovies("favourites");
+            movie = favourites.find(m => String(m.id) === String(movieId));
         }
 
-        const IndivPage = document.getElementById('IndivPage');
-        if (IndivPage) {
-            IndivPage.classList.add('active');
+        if (movie) {
+            // Save the selected movie object to localStorage
+            localStorage.setItem("selectedMovie", JSON.stringify(movie));
+            
+            // Redirect to your about page
+            window.location.href = "about.html";
         }
     }
 });
 
+// Populate about.html when the DOM loads
+document.addEventListener("DOMContentLoaded", () => {
+    const movieJson = localStorage.getItem("selectedMovie");
+    
+    if (!movieJson) {
+        console.warn("No movie selected.");
+        return;
+    }
 
-// danielle
-//WatchlistJS
-document.querySelectorAll('.card-row').forEach(row => {
-let isDown = false;
- let startX;
-let scrollLeft;
+    const movie = JSON.parse(movieJson);
 
- row.addEventListener('mousedown', (e) => {
-isDown = true;
-startX = e.pageX - row.offsetLeft;
-scrollLeft = row.scrollLeft;
- });
+    // Grab your HTML elements on about.html (matching your HTML structure)
+    const posterImg = document.getElementById("aboutPoster");
+    const titleEl = document.getElementById("aboutTitle");
+    const releaseEl = document.getElementById("aboutReleaseDate");
+    const ratingEl = document.getElementById("aboutRating");
+    const overviewEl = document.getElementById("aboutOverview");
 
-row.addEventListener('mouseleave', () => {
-isDown = false;
+    // Populate the elements with the movie data safely
+    if (posterImg && movie.poster_path) {
+        posterImg.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+        posterImg.alt = movie.title || "Movie Poster";
+    }
+
+    if (titleEl) {
+        titleEl.textContent = movie.title || "Untitled"; // Fixed syntax error here
+    }
+
+    if (releaseEl) {
+        releaseEl.textContent = `Release Date: ${movie.release_date || "N/A"}`;
+    }
+
+    if (ratingEl) {
+        ratingEl.textContent = `Rating: ${movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}`;
+    }
+
+    if (overviewEl) {
+        overviewEl.textContent = movie.overview || "No overview available.";
+    }
 });
 
-row.addEventListener('mouseup', () => {
-isDown = false;
- });
+// LUCA
 
-row.addEventListener('mousemove', (e) => {
-if (!isDown) return;
- e.preventDefault();
-const x = e.pageX - row.offsetLeft;
-const walk = (x - startX) * 1.5; 
- row.scrollLeft = scrollLeft - walk;
-  });
+//Login
+const loginText = document.querySelector(".title-text.login");
+const loginForm = document.querySelector("form.login");
+const loginBtn = document.querySelector("label.login");
+const signupBtn = document.querySelector("label.signup");
+const signupLink = document.querySelector("form .signup-link a");
+signupBtn.onclick = (() => {
+  loginForm.style.marginLeft = "-50%";
+  loginText.style.marginLeft = "-50%";
+});
+loginBtn.onclick = (() => {
+  loginForm.style.marginLeft = "0%";
+  loginText.style.marginLeft = "0%";
+});
+signupLink.onclick = (() => {
+  signupBtn.click();
+  return false;
 });
 
 
 
-const watchlistBtn = document.getElementById("watchlistBtn");
-const favouritesBtn = document.getElementById("favouritesBtn");
-  const watchlistPage = document.getElementById("watchlistPage");
-const favouritesPage = document.getElementById("favouritesPage");
-  const pageTitle = document.getElementById("pageTitle");
-
-watchlistBtn.addEventListener("click", function() {
-  watchlistPage.style.display = "block";
-favouritesPage.style.display = "none";
-  pageTitle.textContent = "My Watchlist";
-document.body.className = "watchlistBody";
 
 
-});
 
-
-favouritesBtn.addEventListener("click", function() {
-  watchlistPage.style.display = "none";
-favouritesPage.style.display = "block";
-pageTitle.textContent = "Replays";
-document.body.className = "favouritesBody";
-});
 
 
 

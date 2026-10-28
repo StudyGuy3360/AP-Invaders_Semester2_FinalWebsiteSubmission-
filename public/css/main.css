@@ -76,96 +76,23 @@ form:focus-within .fa-magnifying-glass {
 
 
 
-
-
-
-
 /*Danielle*/
 
-.watchlistBody {
- background: linear-gradient(130deg, #141414 , #141414,  #53CAE4);
-color: #ffffff;
-font-family:Arial, Helvetica, sans-serif;
-margin: 0px;
-padding: 40px;
- min-height: 100vh;
+/*.watchlistBody{
+background: linear-gradient(to bottom, #141414 ,#54ff87);
+  color: #ffffff;
+  font-family:Arial, Helvetica, sans-serif;
+  margin: 0;
 }
+*/
 
-
-
-.genre-stack {
-margin-bottom: 40px;
-}
-
-
-.card-row {
-display: flex;
-gap: 20px;
- overflow-x: auto;
-padding: 10px 5px 30px 5px;
-scroll-behavior: smooth;
-cursor: grab;
-user-select: none;
-
- 
-}
-
-.card-row::-webkit-scrollbar {
- display: none;
-width: 0;
- height: 0;
-background: transparent;
-}
-
-
-.movie-card {
-flex: 0 0 200px;
- height: 300px;
- background: transparent;
- border: none;
-position: relative;
+.moviePosters img:hover, .card-img-top:hover {
 cursor: pointer;
- box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.8);
- transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+transform: translateY(-15px);
+transition: box-shadow 0.3s ease, transform 0.3s ease;
+box-shadow: 0 22px 41px -15px #04b2d9;
+   
 }
-
-
-
-
-
-.movie-card:hover {
-transform: translateY(-8px);
-}
-
-.movie-card:hover .movie-poster {
-box-shadow: 0 20px 40px -15px #1f98b0;
-}
-
-
-.movie-poster {
- width: 100%;
-height: 100%;
- object-fit: cover;
- display: block;
- border-radius: 16px;
-
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
-box-shadow 0.3s ease;
-pointer-events: none; 
-}
-
-.content {
- width: 100%;
-height: 100%;
- object-fit: cover;
- display: block;
- border-radius: 16px;
-
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
-box-shadow 0.3s ease;
-pointer-events: none; 
-}
-
 
 
 
@@ -179,7 +106,7 @@ align-items: center;
 
 
 .textCenter {
-margin-top: 100px;
+margin-top: 35px;
  margin-left:0px;
 font-size: 40;
  font-weight: bold;
@@ -196,67 +123,68 @@ align-items: center;
 }
 
 .tabs button {
- background: none;
- border: none;
-  color: #F8F8F8;
- font-size: 20px;
+ font-size: 21px;
 padding: 10px 250px;
  cursor: pointer;
  margin-top: 0px;
+ background: none;
+ border: none;
+  color: #F8F8F8;
 }
-
 
 #watchlistBtn {
- border-bottom: 3px solid #53CAE4;
-
+border: none;
+border-bottom: 8px solid transparent;
+border-image: linear-gradient(to right, #53CAE4, #53CAE4, #8D54FF) 1;
 }
 
-#watchlistBtn:hover{
-border-bottom: 3px solid #8D54FF;
+#watchlistBtn:hover {
+border-image: linear-gradient(to right, #280e87, #53CAE4) 1;
 }
 
 #favouritesBtn {
-border-bottom: 3px solid #8D54FF;
-
+ border: none;
+border-bottom: 8px solid transparent;
+border-image: linear-gradient(to right, #53CAE4, #8D54FF,#8D54FF) 1;
 }
 
 #favouritesBtn:hover {
-border-bottom: 3px solid #53CAE4;
+border-image: linear-gradient(to right, #8D54FF, #3c075c) 1;
 }
 
 
-.watchlistBody {
-     background: linear-gradient(130deg, #141414 , #141414,  #53CAE4);
-  color: #ffffff;
-  font-family:Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 40px;
-  min-height: 100vh;
-  
+
+
+
+.watchlistBody{
+font-family:Arial, Helvetica, sans-serif;
+margin: 0;
+background: #157c93;
+color: #ffffff;
 }
 
 
 .favouritesBody {
-     background: linear-gradient(130deg, #141414 , #141414,  #8D54FF);
-  color: #ffffff;
-  font-family:Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 40px;
-  min-height: 100vh;
-  
-.movie-card:hover .movie-poster {
-  box-shadow: 0 20px 40px -15px #8D54FF;
-}
+background:#4d3088;
+ color: #ffffff;
+font-family:Arial, Helvetica, sans-serif;
+margin: 0;
 }
 
 
+.custom-remove-btn {
+color: #ffffff;        
+border: 1px solid #ff4d4d;
+background-color: #ff4d4d; 
+ 
+}
 
 
-
-
-
-
-
+.custom-remove-btn:hover {
+ background-color: #cc0000;
+border-color: #cc0000;
+color: #ffffff;
+}
 
 
  /* Calvin */
@@ -1357,4 +1285,71 @@ form:focus-within .fa-magnifying-glass {
     background-color: #53CAE4;
     color: white;
     border-color: #53CAE4;
+}
+
+
+.moviePoster {
+    position: relative;
+}
+
+.movieActions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 5;
+    display: flex;
+    gap: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.movieActionBtn {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #53CAE4;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #53CAE4;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.movieActionBtn:hover {
+    background-color: #8a2be2;
+    border-color: #8a2be2;
+    color: white;
+}
+
+.moviePoster:hover .movieActions,
+.moviePoster:focus-within .movieActions {
+    opacity: 1;
+}
+
+@media (max-width: 991.98px), (hover: none), (pointer: coarse) {
+    .movieActions {
+        opacity: 1;
+    }
+}
+
+.movieRating {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 8px;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    z-index: 4;
+}
+
+.movieRating i {
+    color: #ffc83d;
 }
