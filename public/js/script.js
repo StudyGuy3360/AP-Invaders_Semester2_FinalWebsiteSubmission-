@@ -311,7 +311,7 @@ const movies = getSavedMovies(listName );
  containerElement.innerHTML = `
 <div class="p-4 text-center">
 <p class="text-white">
- Your ${listTitle} is empty. Add movies from the library.
+ Your ${listTitle} is empty
  </p>
 </div>`;
 return; 

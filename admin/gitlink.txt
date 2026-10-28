@@ -41,16 +41,6 @@ https://codepen.io/nillakash24/pen/XWRpzKr
 https://codepen.io/editor/Keenan-Ace/pen/01a0ee7e-3220-7909-9ab2-ac0ce4229423
 
 
-PENCODE FOR LOGIN
-
-https://codepen.io/mr-zouraiz123/pen/ZEeKMVP
-
-code from Codepen for trending now page
-https://codepen.io/yudizsolutions/pen/wvzrPoj
-
-code from carousal bootstrap
-https://getbootstrap.com/docs/6.0/components/carousel/
-
 
 
 PENCODE FOR LOGIN
