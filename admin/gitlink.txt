@@ -54,3 +54,6 @@ https://getbootstrap.com/docs/6.0/components/carousel/
 
 Code Pen for indiv page
 https://codepen.io/Artixx25/pen/gOZmged
+
+home page api integration
+https://www.youtube.com/watch?v=lF2TcUEleps
